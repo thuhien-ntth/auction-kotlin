@@ -1,0 +1,53 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  data:
+    redis:
+      host: ${SPRING_REDIS_HOST:localhost}
+      port: 6379
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: ${AUTH_SERVICE_URL:http://localhost:8081}
+          order: 0
+          predicates:
+            - Path=/api/auth/**,/api/users/**
+          filters:
+            - StripPrefix=1
+
+        # Route cụ thể (bids) phải đứng TRƯỚC route chung /api/products/** (order nhỏ hơn = ưu tiên hơn)
+        # để không bị route chung "nuốt mất" match.
+        - id: bidding-bids
+          uri: ${BIDDING_SERVICE_URL:http://localhost:8083}
+          order: 1
+          predicates:
+            - Path=/api/products/*/bids
+          filters:
+            - StripPrefix=1
+
+        - id: bidding-my-bids
+          uri: ${BIDDING_SERVICE_URL:http://localhost:8083}
+          order: 2
+          predicates:
+            - Path=/api/my/bids/**
+          filters:
+            - StripPrefix=1
+
+        - id: catalog-service
+          uri: ${CATALOG_SERVICE_URL:http://localhost:8082}
+          order: 10
+          predicates:
+            - Path=/api/products/**,/api/my/products/**,/api/admin/**,/api/categories/**
+          filters:
+            - StripPrefix=1
+
+jwt:
+  secret: ${JWT_SECRET:dev-only-change-me-please-32bytes-minimum}
+
+logging:
+  pattern:
+    console: "%d{HH:mm:ss} [%X{traceId}] %-5level %logger{36} - %msg%n"

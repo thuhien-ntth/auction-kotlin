@@ -1,0 +1,10 @@
+# Chỉ dùng khi debug / chạy JMeter kịch bản 4 (đi thẳng vào từng service, bỏ qua gateway):
+#   docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+# KHÔNG dùng cho môi trường chia sẻ: các cổng này bỏ qua cả rate-limit lẫn xác thực ở gateway.
+services:
+  auth-service:
+    ports: ["127.0.0.1:8081:8081"]
+  catalog-service:
+    ports: ["127.0.0.1:8082:8082"]
+  bidding-service:
+    ports: ["127.0.0.1:8083:8083"]

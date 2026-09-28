@@ -1,0 +1,235 @@
+{
+ "A_current_index_on_title": {
+  "leica": {
+   "cur_page": [
+    0.3025206999969517,
+    0.4283349999809616
+   ],
+   "cur_count": [
+    25.841083733335307,
+    27.701648999993722
+   ],
+   "ilike_page": [
+    0.27908313333379436,
+    0.315377000049466
+   ],
+   "ilike_count": [
+    18.786128966676568,
+    20.056463999992502
+   ]
+  },
+  "rolex omega": {
+   "cur_page": [
+    25.9945716333353,
+    27.80063099999097
+   ],
+   "cur_count": [
+    25.69464069999488,
+    27.71945599999981
+   ],
+   "ilike_page": [
+    6.774581499998551,
+    8.18118099999765
+   ],
+   "ilike_count": [
+    6.478599866668826,
+    6.926437000004171
+   ]
+  },
+  "antique": {
+   "cur_page": [
+    28.098500633327223,
+    29.87203899999713
+   ],
+   "cur_count": [
+    31.42065496666646,
+    43.633016000001135
+   ],
+   "ilike_page": [
+    0.3589346333323344,
+    0.4658930000118744
+   ],
+   "ilike_count": [
+    14.25733826666639,
+    14.996076999977959
+   ]
+  },
+  "zz9": {
+   "cur_page": [
+    88.90279966666601,
+    99.73699599999009
+   ],
+   "cur_count": [
+    24.959490533331063,
+    26.84444600004099
+   ],
+   "ilike_page": [
+    0.149313033339619,
+    0.25047100001529543
+   ],
+   "ilike_count": [
+    0.10810463333352043,
+    0.11932699999306351
+   ]
+  },
+  "bronze statue": {
+   "cur_page": [
+    26.34523600000307,
+    27.261766999970405
+   ],
+   "cur_count": [
+    26.413295899993727,
+    27.13528999998971
+   ],
+   "ilike_page": [
+    8.965927000000798,
+    9.448120000001836
+   ],
+   "ilike_count": [
+    8.369386799993586,
+    8.945820999997522
+   ]
+  }
+ },
+ "plan_A_current": [
+  "Aggregate  (cost=5648.35..5648.36 rows=1 width=8) (actual time=30.045..30.046 rows=1 loops=1)",
+  "  Buffers: shared hit=3725",
+  "  ->  Bitmap Heap Scan on products p  (cost=637.02..5648.11 rows=95 width=0) (actual time=1.726..29.635 rows=6963 loops=1)",
+  "        Recheck Cond: ((status)::text = 'ACTIVE'::text)",
+  "        Filter: (lower((title)::text) ~~ lower(concat('%', 'leica', '%')))",
+  "        Rows Removed by Filter: 53151",
+  "        Heap Blocks: exact=3677",
+  "        Buffers: shared hit=3725",
+  "        ->  Bitmap Index Scan on idx_products_status  (cost=0.00..636.99 rows=59293 width=0) (actual time=1.243..1.244 rows=60114 loops=1)",
+  "              Index Cond: ((status)::text = 'ACTIVE'::text)",
+  "              Buffers: shared hit=48",
+  "Planning Time: 0.051 ms",
+  "Execution Time: 30.061 ms"
+ ],
+ "plan_A_ilike": [
+  "Aggregate  (cost=4369.45..4369.46 rows=1 width=8) (actual time=14.039..14.040 rows=1 loops=1)",
+  "  Buffers: shared hit=3710",
+  "  ->  Bitmap Heap Scan on products p  (cost=213.38..4349.99 rows=7786 width=0) (actual time=2.926..13.639 rows=6963 loops=1)",
+  "        Recheck Cond: ((title)::text ~~* concat('%', 'leica', '%'))",
+  "        Filter: ((status)::text = 'ACTIVE'::text)",
+  "        Rows Removed by Filter: 16172",
+  "        Heap Blocks: exact=3674",
+  "        Buffers: shared hit=3710",
+  "        ->  Bitmap Index Scan on idx_products_title_trgm  (cost=0.00..211.44 rows=26263 width=0) (actual time=2.423..2.423 rows=23135 loops=1)",
+  "              Index Cond: ((title)::text ~~* concat('%', 'leica', '%'))",
+  "              Buffers: shared hit=36",
+  "Planning:",
+  "  Buffers: shared hit=1",
+  "Planning Time: 0.080 ms",
+  "Execution Time: 14.056 ms"
+ ],
+ "B_index_on_lower_title": {
+  "leica": {
+   "cur_page": [
+    0.34179496666979503,
+    0.38668600001301456
+   ],
+   "cur_count": [
+    14.076142599996425,
+    15.374167999993915
+   ],
+   "ilike_page": [
+    0.25503943332788975,
+    0.27176599996892037
+   ],
+   "ilike_count": [
+    11.019836200000555,
+    11.752150000006623
+   ]
+  },
+  "rolex omega": {
+   "cur_page": [
+    6.981739933337394,
+    7.326331999990998
+   ],
+   "cur_count": [
+    6.8342935333381165,
+    7.238649000044006
+   ],
+   "ilike_page": [
+    6.460971266670867,
+    6.920754000020679
+   ],
+   "ilike_count": [
+    6.456290633337858,
+    6.6707680000490654
+   ]
+  },
+  "antique": {
+   "cur_page": [
+    0.39791096666400944,
+    0.5111849999934748
+   ],
+   "cur_count": [
+    16.505347799996645,
+    17.332332000023598
+   ],
+   "ilike_page": [
+    0.317031833336993,
+    0.36157800002456497
+   ],
+   "ilike_count": [
+    14.090891933329885,
+    14.616881999984344
+   ]
+  },
+  "zz9": {
+   "cur_page": [
+    0.1594534000010602,
+    0.1995000000079017
+   ],
+   "cur_count": [
+    0.11434349999982867,
+    0.13686199997664517
+   ],
+   "ilike_page": [
+    0.14260536667431248,
+    0.174925000010262
+   ],
+   "ilike_count": [
+    0.12163499999170806,
+    0.15664599999354323
+   ]
+  },
+  "bronze statue": {
+   "cur_page": [
+    8.67464856666326,
+    9.090819999983069
+   ],
+   "cur_count": [
+    8.981367700001405,
+    9.388685000033092
+   ],
+   "ilike_page": [
+    8.366634766667858,
+    10.672739000028741
+   ],
+   "ilike_count": [
+    8.091201500002398,
+    8.783817999983512
+   ]
+  }
+ },
+ "plan_B_current": [
+  "Aggregate  (cost=4320.97..4320.98 rows=1 width=8) (actual time=17.257..17.258 rows=1 loops=1)",
+  "  Buffers: shared hit=3704",
+  "  ->  Bitmap Heap Scan on products p  (cost=174.39..4305.94 rows=6015 width=0) (actual time=2.931..16.862 rows=6963 loops=1)",
+  "        Recheck Cond: (lower((title)::text) ~~ lower(concat('%', 'leica', '%')))",
+  "        Filter: ((status)::text = 'ACTIVE'::text)",
+  "        Rows Removed by Filter: 16172",
+  "        Heap Blocks: exact=3674",
+  "        Buffers: shared hit=3704",
+  "        ->  Bitmap Index Scan on idx_products_title_lower_trgm  (cost=0.00..172.89 rows=20202 width=0) (actual time=2.432..2.433 rows=23135 loops=1)",
+  "              Index Cond: (lower((title)::text) ~~ lower(concat('%', 'leica', '%')))",
+  "              Buffers: shared hit=30",
+  "Planning:",
+  "  Buffers: shared hit=1",
+  "Planning Time: 0.084 ms",
+  "Execution Time: 17.275 ms"
+ ]
+}

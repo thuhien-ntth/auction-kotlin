@@ -1,0 +1,73 @@
+server:
+  port: 8083
+  tomcat:
+    threads:
+      # Số luồng xử lý request tối đa (mặc định Tomcat = 200) — đặt tường minh để đo/điều chỉnh được.
+      max: ${TOMCAT_MAX_THREADS:200}
+
+spring:
+  application:
+    name: bidding-service
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:55434/bidding_db}
+    username: ${SPRING_DATASOURCE_USERNAME:auction}
+    password: ${SPRING_DATASOURCE_PASSWORD:auction}
+    hikari:
+      # Đo thực nghiệm (báo cáo mục 6.6): tăng pool quá số lõi của CSDL làm độ trễ xấu đi.
+      maximum-pool-size: ${DB_POOL_SIZE:10}
+      connection-timeout: 3000
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  data:
+    web:
+      pageable:
+        default-page-size: 20
+        max-page-size: 100
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+jwt:
+  secret: ${JWT_SECRET:dev-only-change-me-please-32bytes-minimum}
+
+# Token dùng chung cho các lời gọi nội bộ /internal/** giữa các service (đặt giá trị thật qua biến môi trường).
+internal:
+  token: ${INTERNAL_TOKEN:dev-internal-token}
+
+catalog-service:
+  base-url: ${CATALOG_SERVICE_URL:http://localhost:8082}
+  connect-timeout-ms: 300
+  read-timeout-ms: 800
+
+bidding:
+  # Số lần thử tối đa khi xung đột optimistic lock; backoff = ngẫu nhiên trong [1, min(retry-max-ms, retry-base-ms * 2^lần_thử)] ms.
+  max-optimistic-retry: 8
+  retry-base-ms: 10
+  retry-max-ms: 200
+  # Ghi cả bid bị từ chối (accepted=false) để phục vụ lịch sử/audit. Tắt nếu muốn giảm tải ghi khi bị dồn bid.
+  record-rejected-bids: true
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      catalog:
+        sliding-window-size: 20
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 5s
+  retry:
+    instances:
+      catalog:
+        max-attempts: 2
+        wait-duration: 150ms
+
+logging:
+  pattern:
+    console: "%d{HH:mm:ss} [%X{traceId}] %-5level %logger{36} - %msg%n"

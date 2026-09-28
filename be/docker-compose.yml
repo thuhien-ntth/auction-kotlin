@@ -1,0 +1,95 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: auth_db
+      POSTGRES_USER: auction
+      POSTGRES_PASSWORD: auction
+    ports: ["127.0.0.1:55432:5432"]
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+      - ./docker/init-multi-db.sql:/docker-entrypoint-initdb.d/init-multi-db.sql:ro
+    mem_limit: 256m
+
+  redis:
+    image: redis:7-alpine
+    ports: ["127.0.0.1:6379:6379"]
+
+  auth-service:
+    build:
+      context: .
+      dockerfile: auth-service/Dockerfile
+    depends_on: [postgres, redis]
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/auth_db
+      SPRING_DATASOURCE_USERNAME: auction
+      SPRING_DATASOURCE_PASSWORD: auction
+      SPRING_REDIS_HOST: redis
+      JWT_SECRET: ${JWT_SECRET:-dev-only-change-me-please-32bytes-minimum}
+      # Gửi mail qua Mailtrap sandbox. Username/password lấy từ file .env (xem .env.example) —
+      # docker compose tự đọc .env cùng thư mục này. Không có .env thì không gửi được mail xác thực.
+      MAIL_HOST: ${MAIL_HOST:-sandbox.smtp.mailtrap.io}
+      MAIL_PORT: ${MAIL_PORT:-2525}
+      MAIL_USERNAME: ${MAIL_USERNAME:-}
+      MAIL_PASSWORD: ${MAIL_PASSWORD:-}
+      MAIL_SMTP_AUTH: ${MAIL_SMTP_AUTH:-true}
+      MAIL_SMTP_STARTTLS: ${MAIL_SMTP_STARTTLS:-true}
+      JAVA_TOOL_OPTIONS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=50 -Xss512k"
+    mem_limit: 384m
+    expose: ["8081"]
+
+  catalog-service:
+    build:
+      context: .
+      dockerfile: catalog-service/Dockerfile
+    depends_on: [postgres, redis]
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/catalog_db
+      SPRING_DATASOURCE_USERNAME: auction
+      SPRING_DATASOURCE_PASSWORD: auction
+      SPRING_REDIS_HOST: redis
+      JWT_SECRET: ${JWT_SECRET:-dev-only-change-me-please-32bytes-minimum}
+      BIDDING_SERVICE_URL: http://bidding-service:8083
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-dev-internal-token-change-me}
+      IMAGE_STORAGE_PATH: /app/uploads/products
+      JAVA_TOOL_OPTIONS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=50 -Xss512k"
+    volumes: ["catalog-images:/app/uploads/products"]
+    mem_limit: 384m
+    expose: ["8082"]
+
+  bidding-service:
+    build:
+      context: .
+      dockerfile: bidding-service/Dockerfile
+    depends_on: [postgres]
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/bidding_db
+      SPRING_DATASOURCE_USERNAME: auction
+      SPRING_DATASOURCE_PASSWORD: auction
+      JWT_SECRET: ${JWT_SECRET:-dev-only-change-me-please-32bytes-minimum}
+      CATALOG_SERVICE_URL: http://catalog-service:8082
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-dev-internal-token-change-me}
+      JAVA_TOOL_OPTIONS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=50 -Xss512k"
+    mem_limit: 384m
+    expose: ["8083"]
+
+  api-gateway:
+    build:
+      context: .
+      dockerfile: api-gateway/Dockerfile
+    depends_on: [auth-service, catalog-service, bidding-service, redis]
+    environment:
+      JWT_SECRET: ${JWT_SECRET:-dev-only-change-me-please-32bytes-minimum}
+      SPRING_REDIS_HOST: redis
+      AUTH_SERVICE_URL: http://auth-service:8081
+      CATALOG_SERVICE_URL: http://catalog-service:8082
+      BIDDING_SERVICE_URL: http://bidding-service:8083
+      JAVA_TOOL_OPTIONS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=50 -Xss512k"
+    mem_limit: 384m
+    ports: ["8080:8080"]
+
+volumes:
+  pg-data:
+  catalog-images:

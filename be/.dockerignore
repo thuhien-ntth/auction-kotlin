@@ -1,0 +1,11 @@
+# Không đưa output build/IDE của máy host vào Docker build context.
+# Trước đây catalog-service/build/libs (build ở máy) bị COPY vào image -> có 2 file .jar (plain + boot)
+# nên bước "COPY *.jar app.jar" lỗi / lấy nhầm jar cũ.
+**/build
+**/bin
+**/out
+.gradle
+**/.gradle
+.idea
+**/*.iml
+.env

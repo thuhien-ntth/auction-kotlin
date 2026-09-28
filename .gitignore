@@ -1,0 +1,33 @@
+# Chỉ đưa lên: be/, fe/, benchmark/ và các tài liệu .md ở gốc
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/be/
+!/fe/
+!/benchmark/
+!/ARCHITECTURE_DESIGN.md
+!/FLOW_SPEC.md
+!/KichBan_Demo_App.md
+
+# Secrets / cấu hình máy cá nhân
+.env
+local.properties
+local.properties.bak
+*.jks
+*.keystore
+
+# Build / IDE
+.gradle/
+build/
+bin/
+out/
+.idea/
+*.iml
+.kotlin/
+captures/
+.DS_Store
+build_log.txt
+
+# Kết quả benchmark tạm (bỏ dòng này nếu muốn commit số liệu)
+# benchmark/*.json

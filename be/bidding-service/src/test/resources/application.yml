@@ -1,0 +1,43 @@
+# Cấu hình riêng cho test (Spring Boot tự ưu tiên src/test/resources trước src/main/resources
+# trên classpath khi chạy `./gradlew test`). Dùng H2 in-memory thay Postgres thật để không cần
+# Docker khi chạy test — mode PostgreSQL để cú pháp SQL/kiểu dữ liệu gần giống nhất có thể.
+# CatalogClient được thay bằng @MockBean trong từng test nên catalog-service.base-url không
+# thật sự được gọi tới.
+spring:
+  datasource:
+    url: jdbc:h2:mem:bidding_test;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+  flyway:
+    enabled: false
+
+jwt:
+  secret: test-only-secret-key-minimum-32-bytes-long!!
+
+catalog-service:
+  base-url: http://localhost:0
+
+bidding:
+  max-optimistic-retry: 5
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      catalog:
+        sliding-window-size: 20
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 5s
+  retry:
+    instances:
+      catalog:
+        max-attempts: 2
+        wait-duration: 150ms
+
+logging:
+  pattern:
+    console: "%d{HH:mm:ss} [%X{traceId}] %-5level %logger{36} - %msg%n"

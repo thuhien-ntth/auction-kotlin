@@ -1,0 +1,90 @@
+server:
+  port: 8082
+  tomcat:
+    threads:
+      max: ${TOMCAT_MAX_THREADS:200}
+
+spring:
+  application:
+    name: catalog-service
+  servlet:
+    multipart:
+      max-file-size: 8MB
+      max-request-size: 8MB
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:55433/catalog_db}
+    username: ${SPRING_DATASOURCE_USERNAME:auction}
+    password: ${SPRING_DATASOURCE_PASSWORD:auction}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:10}
+      connection-timeout: 3000
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  data:
+    redis:
+      host: ${SPRING_REDIS_HOST:localhost}
+      port: 6379
+    web:
+      pageable:
+        default-page-size: 20
+        max-page-size: 100
+  cache:
+    type: redis
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+jwt:
+  secret: ${JWT_SECRET:dev-only-change-me-please-32bytes-minimum}
+
+# Token dùng chung cho các lời gọi nội bộ /internal/** giữa các service (đặt giá trị thật qua biến môi trường).
+internal:
+  token: ${INTERNAL_TOKEN:dev-internal-token}
+
+bidding-service:
+  base-url: ${BIDDING_SERVICE_URL:http://localhost:8083}
+  # Timeout thật cho RestClient (trước đây cấu hình timelimiter 800ms không có tác dụng).
+  connect-timeout-ms: 300
+  read-timeout-ms: 800
+
+# Nơi lưu ảnh sản phẩm trên disk của chính catalog-service — xem storage/ProductImageStorageService.kt
+# và docker-compose.yml (volume catalog-images) để dữ liệu không mất khi container restart.
+catalog:
+  image-storage:
+    base-path: ${IMAGE_STORAGE_PATH:/app/uploads/products}
+
+# TTL ngắn cho cache currentPrice — xem ARCHITECTURE_DESIGN.md mục 4
+cache:
+  current-price-ttl-seconds: 3
+
+# AuctionScheduler: mỗi interval-ms tự mở (APPROVED -> ACTIVE khi đến giờ bắt đầu) và tự đóng
+# (-> SOLD/ENDED_NO_BID khi hết giờ) các sản phẩm theo thời gian người bán đặt. Đóng theo lô
+# (batch-size sản phẩm cho mỗi lời gọi sang bidding-service). Độ trễ mở/đóng tối đa = interval-ms.
+auction-closing:
+  interval-ms: 5000
+  batch-size: 100
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      bidding:
+        sliding-window-size: 20
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 5s
+  retry:
+    instances:
+      bidding:
+        max-attempts: 2
+        wait-duration: 150ms
+
+logging:
+  pattern:
+    console: "%d{HH:mm:ss} [%X{traceId}] %-5level %logger{36} - %msg%n"
