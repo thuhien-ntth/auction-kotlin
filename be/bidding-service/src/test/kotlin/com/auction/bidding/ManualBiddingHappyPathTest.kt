@@ -15,11 +15,7 @@ import java.math.BigDecimal
 import java.time.Instant
 import java.util.UUID
 
-/**
- * NHÓM A — Đặt giá hợp lệ (happy path). Tương ứng mục A1/A2 trong kịch bản test đã gửi user
- * duyệt (chat). Chạy riêng bằng:
- *   ./gradlew :bidding-service:test --tests "com.auction.bidding.ManualBiddingHappyPathTest"
- */
+
 class ManualBiddingHappyPathTest : BiddingIntegrationTestBase() {
 
     private fun jsonHeaders(userId: UUID) =
@@ -37,7 +33,7 @@ class ManualBiddingHappyPathTest : BiddingIntegrationTestBase() {
         )
     }
 
-    // A1: bid đầu tiên của sản phẩm, amount > startPrice, sản phẩm ACTIVE, còn hạn, không phải seller
+    
     @Test
     fun `A1 bid dau tien hop le duoc chap nhan va tu tao AuctionState`() {
         val productId = UUID.randomUUID()
@@ -69,7 +65,7 @@ class ManualBiddingHappyPathTest : BiddingIntegrationTestBase() {
         assertThat(state.sellerId).isEqualTo(sellerId)
     }
 
-    // A2: bid thứ 2 từ bidder khác, giá cao hơn -> currentPrice/currentBidderId cập nhật đúng người mới
+    
     @Test
     fun `A2 bid thu 2 gia cao hon tu bidder khac cap nhat dung nguoi moi`() {
         val productId = UUID.randomUUID()

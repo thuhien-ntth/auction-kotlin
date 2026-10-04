@@ -24,8 +24,8 @@ class JwtAuthFilter(
         val traceId = request.getHeader("X-Trace-Id") ?: UUID.randomUUID().toString()
         MDC.put("traceId", traceId)
         try {
-            // Endpoint nội bộ do bidding-service gọi: không dùng JWT của người dùng, nhưng bắt buộc có
-            // X-Internal-Token — phòng vệ nhiều lớp phòng khi cổng service bị mở ra ngoài nhầm.
+            
+            
             if (request.requestURI.startsWith("/internal/")) {
                 val provided = request.getHeader("X-Internal-Token") ?: ""
                 if (!MessageDigest.isEqual(provided.toByteArray(), internalToken.toByteArray())) {

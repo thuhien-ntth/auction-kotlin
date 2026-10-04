@@ -18,13 +18,7 @@ import java.util.UUID
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
 
-/**
- * Benchmark ĐẦU-CUỐI của bidding-service thật (Tomcat + JwtAuthFilter + Hibernate + HikariCP + PostgreSQL),
- * chỉ mock CatalogClient. Mặc định TẮT; bật bằng biến môi trường BENCH_REAL=true và trỏ datasource sang PostgreSQL:
- *   SPRING_DATASOURCE_URL, SPRING_DATASOURCE_USERNAME, SPRING_DATASOURCE_PASSWORD,
- *   SPRING_JPA_HIBERNATE_DDL_AUTO=none, SPRING_FLYWAY_ENABLED=true
- * Tham số: BENCH_PLAN="random:50,ascending:200,..." ; BENCH_REPS=10 ; BENCH_OUT=/duong/dan/ket_qua.json
- */
+
 @EnabledIfEnvironmentVariable(named = "BENCH_REAL", matches = "true")
 class RealPostgresLoadBench : BiddingIntegrationTestBase() {
 
@@ -38,7 +32,7 @@ class RealPostgresLoadBench : BiddingIntegrationTestBase() {
         val out = System.getenv("BENCH_OUT") ?: "bench_real.json"
         val client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1).connectTimeout(Duration.ofSeconds(10)).build()
         val rows = mutableListOf<String>()
-        // khởi động (JIT, pool) trước khi đo
+        
         run(client, "random", 30, 0)
         for ((order, n) in plan) for (rep in 1..reps) {
             val r = run(client, order, n, rep)
@@ -53,7 +47,7 @@ class RealPostgresLoadBench : BiddingIntegrationTestBase() {
         given(catalogClient.getProduct(productId)).willReturn(
             CatalogClient.CatalogProductInfo(productId, seller, base, "ACTIVE", Instant.now().plusSeconds(3600)))
         val preinit = System.getenv("BENCH_PREINIT") != "false"
-        if (preinit) {   // 1 bid khởi tạo auction_state trước, không tính vào số đo (giá 500 < mọi giá đo)
+        if (preinit) {   
             val warm = UUID.randomUUID()
             client.send(HttpRequest.newBuilder(URI("http://localhost:$port/products/$productId/bids"))
                 .header("Authorization", "Bearer ${JwtTestSupport.tokenFor(warm, false)}").header("Content-Type", "application/json")

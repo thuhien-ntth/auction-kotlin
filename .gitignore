@@ -31,3 +31,7 @@ build_log.txt
 
 # Kết quả benchmark tạm (bỏ dòng này nếu muốn commit số liệu)
 # benchmark/*.json
+
+# Kết quả đo JMeter (jtl lớn + tokens.csv chứa JWT)
+benchmark/jmeter/results/
+benchmark/jmeter/quick_run_log.txt

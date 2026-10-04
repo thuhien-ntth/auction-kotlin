@@ -9,6 +9,6 @@ import java.util.UUID
 
 interface AuctionStateRepository : JpaRepository<AuctionState, UUID> {
 
-    // Won list (USMPS0050000): mình đang là currentBidder VÀ phiên đã kết thúc
+    
     fun findByCurrentBidderIdAndAuctionEndAtBefore(bidderId: UUID, now: Instant, pageable: Pageable): Page<AuctionState>
 }

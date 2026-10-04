@@ -9,12 +9,7 @@ import java.math.BigDecimal
 import java.time.Instant
 import java.util.UUID
 
-/**
- * Nguồn ghi (source of truth) DUY NHẤT cho currentPrice của 1 sản phẩm đang đấu giá.
- * @Version -> Hibernate optimistic locking: mọi UPDATE đều kèm WHERE version = X,
- * nếu 2 transaction cùng đọc version=5 và cùng update, chỉ 1 cái thành công, cái còn
- * lại nhận OptimisticLockException -> BiddingService retry (xem mục 3.2/4 trong doc thiết kế).
- */
+
 @Entity
 @Table(name = "auction_state")
 class AuctionState(

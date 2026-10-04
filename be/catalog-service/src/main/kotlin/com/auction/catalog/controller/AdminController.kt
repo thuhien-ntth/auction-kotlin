@@ -12,7 +12,7 @@ import org.springframework.data.domain.Pageable
 import org.springframework.web.bind.annotation.*
 import java.util.UUID
 
-// Admin slice tối thiểu — ARCHITECTURE_DESIGN.md mục 1.1
+
 @RestController
 @RequestMapping("/admin")
 class AdminController(
@@ -24,7 +24,7 @@ class AdminController(
         return productService.pendingApproval(pageable)
     }
 
-    // Danh sách đã xét duyệt — GET /api/admin/products/reviewed?result=APPROVED|REJECTED
+    
     @GetMapping("/products/reviewed")
     fun reviewed(
         request: HttpServletRequest,

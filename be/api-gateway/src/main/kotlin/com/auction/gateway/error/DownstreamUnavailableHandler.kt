@@ -12,14 +12,6 @@ import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.util.concurrent.TimeoutException
 
-// Khi service phía sau (catalog/bidding/auth) chết hoặc quá chậm, Gateway trước đây trả 500 chung chung
-// — client không phân biệt được "lỗi code" với "service đang không sẵn sàng". Handler này đứng TRƯỚC
-// handler mặc định của Spring Boot (order -2 < -1) và chỉ xử lý đúng 2 nhóm lỗi:
-//   - không kết nối được downstream (connection refused, ...) -> 503 Service Unavailable
-//   - downstream không phản hồi kịp (timeout)                 -> 504 Gateway Timeout
-// (Dùng WebExceptionHandler thay vì ErrorWebExceptionHandler để KHÔNG làm handler mặc định của Boot bị vô hiệu hoá.)
-// Mọi lỗi khác được ném lại (Mono.error) để handler mặc định + ApiErrorAttributes xử lý như cũ.
-// Body giữ đúng format chung {statusCode, message}.
 @Component
 @Order(-2)
 class DownstreamUnavailableHandler : WebExceptionHandler {

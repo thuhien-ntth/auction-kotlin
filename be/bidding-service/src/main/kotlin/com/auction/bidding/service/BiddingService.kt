@@ -23,20 +23,7 @@ import java.time.Instant
 import java.util.UUID
 import kotlin.random.Random
 
-/**
- * Trung tâm xử lý bài toán kiến trúc chính của đồ án: đặt giá đồng thời trên cùng 1
- * sản phẩm không được để "mất update" (2 bidder cùng thắng, hoặc giá bị ghi đè sai).
- * Chiến lược: optimistic locking (AuctionState.version, xử lý transaction thật sự trong
- * BidTransactionExecutor) + retry vòng lặp ngắn ở tầng này thay vì giữ khoá DB (pessimistic)
- * suốt thời gian xử lý — xem lý do & so sánh thực nghiệm ở báo cáo (mục 6).
- *
- * Cải tiến so với bản đầu:
- *  - Đường nóng chỉ đọc auction_state 1 lần (trong transaction); việc khởi tạo auction_state
- *    chỉ xảy ra khi executor báo StateMissing, không còn existsById cho mỗi bid.
- *  - Backoff lũy thừa có jitter, số lần thử cấu hình được; hết lượt thử trả 503 (không phải 500).
- *  - Lỗi khi gọi catalog-service được ánh xạ sang 404/503 thay vì 500 chung chung.
- *  - Micrometer counter cho mỗi kết quả và mỗi lần xung đột version.
- */
+
 @Service
 class BiddingService(
     private val auctionStateRepository: AuctionStateRepository,
@@ -92,7 +79,7 @@ class BiddingService(
         meterRegistry.counter("bidding.bids", "outcome", name).increment()
     }
 
-    // Backoff lũy thừa (base * 2^attempt, trần retryMaxMs) với jitter đầy đủ: ngủ ngẫu nhiên trong [1, trần].
+    
     private fun backoff(attempt: Int) {
         val ceiling = minOf(retryMaxMs, retryBaseMs shl minOf(attempt, 10)).coerceAtLeast(1L)
         try {
@@ -103,7 +90,7 @@ class BiddingService(
         }
     }
 
-    // Chỉ chạy ở lần bid đầu tiên của 1 sản phẩm.
+    
     private fun initializeAuctionState(productId: UUID) {
         val fetched = try {
             catalogClient.getProduct(productId)
@@ -135,8 +122,8 @@ class BiddingService(
                 )
             )
         } catch (ex: DataAccessException) {
-            // 2 request đầu tiên khởi tạo song song: bên thua đụng khoá trùng, đó là bình thường.
-            // Chỉ nuốt lỗi khi hàng đã tồn tại; mọi lỗi khác (mất kết nối DB...) phải lan ra.
+            
+            
             if (!auctionStateRepository.existsById(productId)) throw ex
         }
     }
@@ -144,21 +131,21 @@ class BiddingService(
     fun history(productId: UUID, pageable: Pageable): Page<BidResponse> =
         bidRepository.findByProductIdOrderByCreatedAtDesc(productId, pageable).map(BidResponse::from)
 
-    // Participating (USMPS0020000): sản phẩm user đã đặt giá hợp lệ và phiên CHƯA kết thúc
+    
     fun participating(bidderId: UUID, pageable: Pageable): Page<AuctionStateResponse> {
         val productIdsPage = bidRepository.findActiveParticipatingProductIds(bidderId, Instant.now(), pageable)
         val states = auctionStateRepository.findAllById(productIdsPage.content).associateBy { it.productId }
         return withProductInfo(productIdsPage.map { pid -> AuctionStateResponse.from(states.getValue(pid)) })
     }
 
-    // Won list (USMPS0050000)
+    
     fun won(bidderId: UUID, pageable: Pageable): Page<AuctionStateResponse> =
         withProductInfo(
             auctionStateRepository.findByCurrentBidderIdAndAuctionEndAtBefore(bidderId, Instant.now(), pageable)
                 .map(AuctionStateResponse::from)
         )
 
-    // Gắn tên + ảnh sản phẩm cho cả trang bằng 1 lời gọi batch sang catalog-service (không N+1)
+    
     private fun withProductInfo(page: Page<AuctionStateResponse>): Page<AuctionStateResponse> {
         val briefs = catalogClient.getProductBriefs(page.content.map { it.productId })
         return page.map { s -> briefs[s.productId]?.let { s.copy(title = it.title, imageUrl = it.imageUrl) } ?: s }

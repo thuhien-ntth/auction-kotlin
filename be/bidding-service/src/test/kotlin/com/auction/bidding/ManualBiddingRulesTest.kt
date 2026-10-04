@@ -17,10 +17,7 @@ import java.math.BigDecimal
 import java.time.Instant
 import java.util.UUID
 
-/**
- * NHÓM B — Các quy tắc từ chối bid. Kiểm tra cả mã HTTP (409) lẫn việc bid bị từ chối VẪN được
- * ghi vào bảng bids (accepted=false) — trước đây bản ghi này bị rollback cùng transaction.
- */
+
 class ManualBiddingRulesTest : BiddingIntegrationTestBase() {
 
     private val startPrice = BigDecimal("1000000")
@@ -59,7 +56,7 @@ class ManualBiddingRulesTest : BiddingIntegrationTestBase() {
         val productId = UUID.randomUUID(); val seller = UUID.randomUUID(); val bidder = UUID.randomUUID()
         mockProduct(productId, seller)
 
-        val response = bid(productId, bidder, "1000000") // bằng giá khởi điểm -> không đủ cao
+        val response = bid(productId, bidder, "1000000") 
 
         assertThat(response.statusCode).isEqualTo(HttpStatus.CONFLICT)
         assertThat(response.body!!.message).contains("higher than the current price")

@@ -28,8 +28,6 @@ services:
       SPRING_DATASOURCE_PASSWORD: auction
       SPRING_REDIS_HOST: redis
       JWT_SECRET: ${JWT_SECRET:-dev-only-change-me-please-32bytes-minimum}
-      # Gửi mail qua Mailtrap sandbox. Username/password lấy từ file .env (xem .env.example) —
-      # docker compose tự đọc .env cùng thư mục này. Không có .env thì không gửi được mail xác thực.
       MAIL_HOST: ${MAIL_HOST:-sandbox.smtp.mailtrap.io}
       MAIL_PORT: ${MAIL_PORT:-2525}
       MAIL_USERNAME: ${MAIL_USERNAME:-}

@@ -14,14 +14,7 @@ import java.nio.file.Paths
 import java.nio.file.StandardCopyOption
 import java.util.UUID
 
-/**
- * Lưu ảnh sản phẩm cục bộ trên disk của chính catalog-service (Docker volume riêng, xem
- * docker-compose.yml). Ảnh là dữ liệu thuộc bounded context Catalog (gắn liền 1-1 với Product),
- * nên KHÔNG tách thành 1 "media-service" riêng — tách ra sẽ chỉ thêm 1 network hop mà không
- * giải quyết boundary nào (đúng tinh thần "không thiết kế 1 service cho mọi feature",
- * ARCHITECTURE_DESIGN.md mục 5.1 DC3). Nếu sau này cần scale ảnh lớn/CDN thật, đây là chỗ
- * thay implementation (S3/MinIO) mà không phải đổi hợp đồng API (vẫn là GET .../image).
- */
+
 @Component
 class ProductImageStorageService(
     @Value("\${catalog.image-storage.base-path:/app/uploads/products}") basePathProperty: String
@@ -43,7 +36,7 @@ class ProductImageStorageService(
                 HttpStatus.BAD_REQUEST,
                 "Only JPEG/PNG/WebP images are supported (received: ${file.contentType})"
             )
-        // Tên file = productId — mỗi sản phẩm chỉ giữ 1 ảnh, upload lại sẽ ghi đè (không tích luỹ rác trên disk).
+        
         val filename = "$productId.$ext"
         val target = basePath.resolve(filename)
         file.inputStream.use { input ->

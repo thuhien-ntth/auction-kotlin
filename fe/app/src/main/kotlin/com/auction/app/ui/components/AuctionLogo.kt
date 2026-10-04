@@ -31,7 +31,7 @@ fun AuctionLogo(
     ) {
         Icon(
             imageVector = Icons.Default.Balance,
-            contentDescription = "Biểu trưng AUCTION",
+            contentDescription = "AUCTION",
             tint = tint,
             modifier = Modifier.size(iconSize)
         )

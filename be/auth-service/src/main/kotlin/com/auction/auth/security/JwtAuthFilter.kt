@@ -8,10 +8,6 @@ import org.springframework.stereotype.Component
 import org.springframework.web.filter.OncePerRequestFilter
 import java.util.UUID
 
-/**
- * Chỉ dùng để nhận diện user cho endpoint /api/auth/logout (cần biết jti để revoke).
- * Không chặn request thiếu token vì phần lớn endpoint của auth-service là public (login).
- */
 @Component
 class JwtAuthFilter(
     private val jwtUtil: JwtUtil,
@@ -23,8 +19,6 @@ class JwtAuthFilter(
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
-        // Propagate traceId do Gateway sinh ra -> log của mọi service cùng 1 request có thể grep chung
-        // (giảm nhẹ monitoring challenge MC1 "collection of logs from containers" — ARCHITECTURE_DESIGN.md mục 5.2)
         val traceId = request.getHeader("X-Trace-Id") ?: UUID.randomUUID().toString()
         MDC.put("traceId", traceId)
         try {

@@ -1,7 +1,5 @@
 package com.auction.app.ui.screens.register
 
-import android.widget.Toast
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -17,14 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.auction.app.LocalAppContainer
 import com.auction.app.ui.navigation.Routes
-import com.auction.app.ui.theme.AuctionAppTheme
-import com.auction.app.ui.theme.Navy
 
 @Composable
 fun RegisterScreen(navController: NavController) {
@@ -116,7 +111,6 @@ fun RegisterScreenContent(
                 label = { Text("Mật khẩu") },
                 leadingIcon = { Icon(Icons.Default.Lock, contentDescription = null) },
                 isError = uiState.passwordError != null,
-                // Chưa có lỗi thì hiện gợi ý quy tắc; có lỗi thì hiện lỗi (màu đỏ)
                 supportingText = { Text(uiState.passwordError ?: "Tối thiểu 8 ký tự, gồm cả chữ và số") },
                 trailingIcon = {
                     IconButton(onClick = onTogglePasswordVisibility) {
@@ -152,21 +146,5 @@ fun RegisterScreenContent(
                 Text("Đã có tài khoản? Đăng nhập")
             }
         }
-    }
-}
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun RegisterScreenPreview() {
-    AuctionAppTheme {
-        RegisterScreenContent(
-            uiState = RegisterUiState(),
-            onFullNameChange = {},
-            onEmailChange = {},
-            onPasswordChange = {},
-            onTogglePasswordVisibility = {},
-            onRegisterClick = {},
-            onNavigateToLogin = {}
-        )
     }
 }

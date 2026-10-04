@@ -8,11 +8,6 @@ import jakarta.persistence.Table
 import java.time.Instant
 import java.util.UUID
 
-/**
- * Bounded context: Identity & Access.
- * Chỉ 1 field isAdmin (boolean) thay vì bảng "role" riêng — đủ cho yêu cầu tối thiểu
- * "vai trò Admin tách biệt", xem ARCHITECTURE_DESIGN.md mục 1.1.
- */
 @Entity
 @Table(name = "users")
 class User(

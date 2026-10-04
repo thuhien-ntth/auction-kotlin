@@ -1,0 +1,13 @@
+# Override chỉ dùng khi đo hiệu năng (run_perf.py tự gắn file này):
+#  - mở cổng 8082 của catalog-service ra localhost để đo overhead của Gateway (gọi thẳng vs qua :8080)
+#  - bật/tắt cache currentPrice qua biến PERF_CACHE_TTL (giây; 0 = tắt cache, xem CacheConfig.kt)
+#  - giới hạn RAM của catalog-service và bidding-service qua PERF_MEM_LIMIT (mặc định 384m như docker-compose.yml;
+#    đặt 512m nếu lần đo trước thấy 2 service này dùng > 90 % giới hạn)
+services:
+  catalog-service:
+    ports: ["127.0.0.1:8082:8082"]
+    mem_limit: ${PERF_MEM_LIMIT:-384m}
+    environment:
+      SPRING_APPLICATION_JSON: '{"cache":{"current-price-ttl-seconds":${PERF_CACHE_TTL:-3}}}'
+  bidding-service:
+    mem_limit: ${PERF_MEM_LIMIT:-384m}

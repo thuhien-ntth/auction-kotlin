@@ -1,19 +1,15 @@
 package com.auction.app.ui.screens.admin
 
-import android.widget.Toast
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -79,7 +75,6 @@ fun AdminDashboardContent(
     onReject: (String, String) -> Unit,
     onSelectTab: (AdminTab) -> Unit = {}
 ) {
-    // Id sản phẩm đang được admin nhập lý do từ chối (null = không mở dialog).
     var rejectingId by remember { mutableStateOf<String?>(null) }
     var reason by remember { mutableStateOf("") }
 
@@ -116,9 +111,6 @@ fun AdminDashboardContent(
             .padding(padding)
             .padding(16.dp)
     ) {
-        // Màn "Duyệt sản phẩm" chỉ chứa sản phẩm đang chờ duyệt (selectedTab luôn = PENDING).
-        // Sản phẩm đã duyệt / bị từ chối admin xem ở màn Tìm kiếm.
-
         val products = when (uiState.selectedTab) {
             AdminTab.PENDING -> uiState.pendingProducts
             AdminTab.APPROVED -> uiState.approvedProducts
@@ -167,7 +159,6 @@ fun AdminDashboardContent(
     }
 }
 
-// Card cho tab "Đã duyệt" / "Đã từ chối": không có nút thao tác, sản phẩm bị từ chối hiển thị kèm lý do.
 @Composable
 fun ReviewedProductCard(
     product: ProductSummary,
@@ -277,99 +268,5 @@ fun PendingProductCard(
                 }
             }
         }
-    }
-}
-
-@Preview(showBackground = true, showSystemUi = true, name = "Loading")
-@Composable
-fun AdminDashboardLoadingPreview() {
-    AuctionAppTheme {
-        AdminDashboardContent(
-            uiState = AdminDashboardUiState(isLoading = true),
-            onOpenProduct = {},
-            onApprove = {},
-            onReject = { _, _ -> }
-        )
-    }
-}
-
-@Preview(showBackground = true, showSystemUi = true, name = "Empty")
-@Composable
-fun AdminDashboardEmptyPreview() {
-    AuctionAppTheme {
-        AdminDashboardContent(
-            uiState = AdminDashboardUiState(
-                isLoading = false,
-                pendingProducts = emptyList()
-            ),
-            onOpenProduct = {},
-            onApprove = {},
-            onReject = { _, _ -> }
-        )
-    }
-}
-
-@Preview(showBackground = true, showSystemUi = true, name = "With Products")
-@Composable
-fun AdminDashboardWithProductsPreview() {
-    AuctionAppTheme {
-        AdminDashboardContent(
-            uiState = AdminDashboardUiState(
-                isLoading = false,
-                pendingProducts = listOf(
-                    ProductSummary(
-                        id = "1",
-                        title = "Tranh sơn dầu phong cảnh",
-                        category = "Nghệ thuật",
-                        startPrice = java.math.BigDecimal("5000000"),
-                        status = "PENDING",
-                        auctionStartAt = null,
-                        auctionEndAt = null
-                    ),
-                    ProductSummary(
-                        id = "2",
-                        title = "Đồng hồ cổ Thụy Sĩ 1960",
-                        category = "Đồ cổ",
-                        startPrice = java.math.BigDecimal("15000000"),
-                        status = "PENDING",
-                        auctionStartAt = null,
-                        auctionEndAt = null
-                    ),
-                    ProductSummary(
-                        id = "3",
-                        title = "Bình gốm sứ Bát Tràng",
-                        category = "Thủ công mỹ nghệ",
-                        startPrice = java.math.BigDecimal("2000000"),
-                        status = "PENDING",
-                        auctionStartAt = null,
-                        auctionEndAt = null
-                    )
-                )
-            ),
-            onOpenProduct = {},
-            onApprove = {},
-            onReject = { _, _ -> }
-        )
-    }
-}
-
-@Preview(showBackground = true, name = "Product Card")
-@Composable
-fun PendingProductCardPreview() {
-    AuctionAppTheme {
-        PendingProductCard(
-            product = ProductSummary(
-                id = "1",
-                title = "Tranh sơn dầu phong cảnh",
-                category = "Nghệ thuật",
-                startPrice = java.math.BigDecimal("5000000"),
-                status = "PENDING",
-                auctionStartAt = null,
-                auctionEndAt = null
-            ),
-            onOpen = {},
-            onApprove = {},
-            onReject = {}
-        )
     }
 }

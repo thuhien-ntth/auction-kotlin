@@ -37,8 +37,8 @@ class Product(
     @Column(nullable = false)
     var status: ProductStatus = ProductStatus.PENDING_APPROVAL,
 
-    // Thời gian đấu giá do người bán đặt khi đăng sản phẩm. Đến auctionStartAt hệ thống tự mở (ACTIVE),
-    // đến auctionEndAt tự đóng (SOLD / ENDED_NO_BID) — xem job/AuctionScheduler.kt.
+    
+    
     @Column(name = "auction_start_at", nullable = false)
     var auctionStartAt: Instant,
 
@@ -48,8 +48,8 @@ class Product(
     @Column(name = "rejection_reason")
     var rejectionReason: String? = null,
 
-    // Tên file ảnh đã lưu trên disk của chính catalog-service (không phải URL đầy đủ) —
-    // xem storage/ProductImageStorageService.kt. Null = sản phẩm chưa upload ảnh.
+    
+    
     @Column(name = "image_path")
     var imagePath: String? = null,
 
@@ -59,7 +59,7 @@ class Product(
     @Column(name = "updated_at", nullable = false)
     var updatedAt: Instant = Instant.now(),
 
-    // Đơn vị tiền tệ: VND / USD / EUR (xem ProductService.SUPPORTED_CURRENCIES). startPrice và mọi bid đều theo đơn vị này.
+    
     @Column(nullable = false, length = 3)
     var currency: String = "VND"
 )

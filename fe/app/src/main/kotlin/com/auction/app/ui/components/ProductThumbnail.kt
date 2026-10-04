@@ -17,13 +17,6 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.auction.app.BuildConfig
 
-/**
- * Ảnh đại diện sản phẩm. Nếu sản phẩm đã có ảnh (imageUrl từ ProductSummary/ProductDetail —
- * đường dẫn tương đối "products/{id}/image", xem API_CONTRACT.md mục Product Image), hiển thị
- * ảnh thật qua Coil (GET /api/products/{id}/image — endpoint public, không cần JWT).
- * Nếu chưa có ảnh (imageUrl == null) hoặc sản phẩm chưa upload, hiển thị icon búa đấu giá
- * làm placeholder, vẫn giữ đúng bố cục thumbnail vuông bo góc như mockup spec gốc.
- */
 @Composable
 fun ProductThumbnail(
     modifier: Modifier = Modifier,

@@ -2,10 +2,8 @@ package com.auction.app.ui.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -34,7 +32,6 @@ fun NjAuctionItemCard(
     index: Int,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    // Admin: hiện trạng thái (đã duyệt / đang đấu giá / bị từ chối...) và lý do từ chối
     showStatus: Boolean = false
 ) {
     Card(
@@ -52,15 +49,12 @@ fun NjAuctionItemCard(
                 .padding(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // 1. Thumbnail bên trái với nền ngọc lục bảo và icon Trái tim Favorite góc trên
             Box(
                 modifier = Modifier
                     .size(86.dp)
                     .clip(RoundedCornerShape(4.dp))
                     .background(Color(0xFF1B3B30))
             ) {
-                // Ảnh thật của sản phẩm nếu đã upload (products/{id}/image), ngược lại giữ icon
-                // kim cương placeholder như mockup gốc.
                 if (product.imageUrl.isNullOrBlank()) {
                     Icon(
                         imageVector = Icons.Default.Diamond,
@@ -99,7 +93,6 @@ fun NjAuctionItemCard(
 
                 Spacer(modifier = Modifier.height(3.dp))
 
-                // Danh mục sản phẩm + số người tham gia đấu giá
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(Icons.Default.Category, contentDescription = "Danh mục", tint = TextMuted, modifier = Modifier.size(11.dp))
                     Text(
@@ -133,12 +126,10 @@ fun NjAuctionItemCard(
                 }
             }
 
-            // 3. Cột bên phải: Mã sản phẩm, Giá hiện tại
             Column(
                 horizontalAlignment = Alignment.End,
                 modifier = Modifier.width(100.dp)
             ) {
-                // Giá hiện tại
                 Column(horizontalAlignment = Alignment.End) {
                     Text(
                         text = "Giá hiện tại ",

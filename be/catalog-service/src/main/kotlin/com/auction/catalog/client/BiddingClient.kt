@@ -14,16 +14,7 @@ import java.io.Serializable
 import java.math.BigDecimal
 import java.util.UUID
 
-/**
- * Gọi sang bidding-service — API Composition pattern (ARCHITECTURE_DESIGN.md mục 3.2/4).
- *
- * - Có timeout kết nối/đọc thật cho RestClient (trước đây không có nên lời gọi có thể treo vô hạn).
- * - Cache Redis TTL ngắn cho currentPrice, NHƯNG kết quả fallback (bidding-service lỗi) không bao giờ
- *   được cache (unless = "#result.degraded"), tránh giá khởi điểm sai bị giữ thêm vài giây sau lỗi thoáng qua.
- * - KHÔNG dùng sync = true: Spring cấm kết hợp sync = true với unless (IllegalStateException lúc gọi), khiến mọi
- *   lần đọc rơi vào fallback. Đánh đổi: khi cache hết hạn, nhiều luồng có thể cùng hỏi bidding-service một lượt (TTL 3 s, lời gọi rẻ).
- * - Gắn X-Internal-Token và chuyển tiếp X-Trace-Id cho mọi lời gọi.
- */
+
 @Component
 class BiddingClient(
     @Value("\${bidding-service.base-url}") baseUrl: String,
@@ -54,21 +45,21 @@ class BiddingClient(
             .uri("/internal/products/{id}/current-price", productId)
             .retrieve()
             .body(CurrentPriceResponse::class.java)
-        // price = null nghĩa là chưa có bid nào (đây là kết quả hợp lệ, được phép cache)
+        
         return CurrentPrice(price = body?.currentPrice)
     }
 
     @Suppress("UNUSED_PARAMETER")
     fun fallbackPrice(productId: UUID, ex: Exception): CurrentPrice {
-        // bidding-service không phản hồi kịp -> caller dùng giá khởi điểm; degraded = true để KHÔNG cache
+        
         log.warn("Fallback giá hiện tại cho product={} do lỗi: {}", productId, ex.toString())
         return CurrentPrice(price = null, degraded = true)
     }
 
-    // Dùng bởi AuctionScheduler: lấy kết quả của cả LÔ sản phẩm trong 1 lời gọi (thay vì N lời gọi).
-    // KHÔNG cache — quyết định ghi một lần, phải luôn dùng dữ liệu mới nhất.
-    // Trả về null khi bidding-service không phản hồi được -> job dừng lượt này và thử lại lượt sau,
-    // thay vì đoán sai trạng thái. Sản phẩm vắng mặt trong Map = chưa từng có bid.
+    
+    
+    
+    
     @CircuitBreaker(name = "bidding", fallbackMethod = "fallbackResults")
     @Retry(name = "bidding")
     fun getAuctionResults(productIds: List<UUID>): Map<UUID, AuctionResult>? {
@@ -88,8 +79,8 @@ class BiddingClient(
         return null
     }
 
-    // Số người tham gia đấu giá cho cả trang danh sách (1 lời gọi / trang, không N+1).
-    // Lỗi -> trả map rỗng (hiển thị 0) chứ không làm hỏng màn tìm kiếm.
+    
+    
     @CircuitBreaker(name = "bidding", fallbackMethod = "fallbackBidderCounts")
     fun getBidderCounts(productIds: List<UUID>): Map<UUID, Long> {
         if (productIds.isEmpty()) return emptyMap()
@@ -113,7 +104,7 @@ class BiddingClient(
         private val log = LoggerFactory.getLogger(BiddingClient::class.java)
     }
 
-    // price = null khi chưa có bid nào; degraded = true khi đây là giá trị fallback do lỗi
+    
     data class CurrentPrice(val price: BigDecimal?, val degraded: Boolean = false) : Serializable
 
     data class CurrentPriceResponse(val currentPrice: BigDecimal?)

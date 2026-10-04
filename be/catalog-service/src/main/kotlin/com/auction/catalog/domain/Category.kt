@@ -21,7 +21,7 @@ class Category(
     @Column(name = "created_at", nullable = false)
     val createdAt: Instant = Instant.now(),
 
-    // Thứ tự hiển thị trong dropdown (nhỏ lên trước). Xem migration V8.
+    
     @Column(name = "sort_order", nullable = false)
     var sortOrder: Int = 1000
 )

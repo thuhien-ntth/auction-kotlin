@@ -5,18 +5,12 @@ import org.springframework.boot.web.reactive.error.DefaultErrorAttributes
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.ServerRequest
 
-// Chuẩn hoá format lỗi mặc định của Spring Cloud Gateway (vốn trả {timestamp, path, status, error,
-// requestId, ...}) về đúng format chung {statusCode, message} — áp dụng cho lỗi phát sinh ngay tại
-// Gateway (route không khớp, downstream service không phản hồi được, v.v.), khác với lỗi 401 tự
-// viết tay trong JwtGatewayFilter (đã tự trả đúng format) và lỗi trả về nguyên văn từ các service
-// phía sau (đã có GlobalExceptionHandler riêng ở mỗi service).
 @Component
 class ApiErrorAttributes : DefaultErrorAttributes() {
 
     override fun getErrorAttributes(request: ServerRequest, options: ErrorAttributeOptions): MutableMap<String, Any> {
         val defaults = super.getErrorAttributes(request, options)
         val statusCode = (defaults["status"] as? Int) ?: 500
-        // Lỗi phát sinh tại Gateway (route không khớp, 405...) — Spring trả message tiếng Anh, dịch theo status
         val message = when (statusCode) {
             400 -> "Yêu cầu không hợp lệ"
             401 -> "Vui lòng đăng nhập"

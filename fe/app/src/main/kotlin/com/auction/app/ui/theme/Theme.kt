@@ -48,15 +48,9 @@ private val DarkColors = darkColorScheme(
     onSurfaceVariant = NeutralGreyVariant80
 )
 
-/**
- * Theme Material Design 3 cho toàn app — có light/dark + dynamic color (Material You) trên
- * Android 12+. Bọc quanh AppNavHost() ở MainActivity thay vì MaterialTheme{} trần.
- */
 @Composable
 fun AuctionAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Mặc định TẮT dynamic color (Material You): đồ án chủ đích dùng bảng màu navy + vàng đồng
-    // tham khảo từ mockup NJ Auction trong spec, không để hệ thống ghi đè theo hình nền máy.
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {

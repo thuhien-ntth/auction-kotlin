@@ -12,17 +12,7 @@ import java.math.BigDecimal
 import java.time.Instant
 import java.util.UUID
 
-/**
- * Tách riêng thành 1 bean độc lập (thay vì 1 private method trong BiddingService) vì
- * @Transactional của Spring dựa trên proxy: gọi qua "this." trong cùng class (self-invocation)
- * sẽ KHÔNG đi qua proxy nên transaction sẽ không được áp dụng — lỗi kinh điển khi dùng
- * Spring AOP. BiddingService gọi sang bean này để đảm bảo mỗi lần thử đặt giá chạy trong
- * đúng 1 transaction riêng (cần thiết để optimistic lock retry hoạt động đúng).
- *
- * Phương thức KHÔNG ném ngoại lệ nghiệp vụ: bid bị từ chối được ghi lại (nếu bật
- * bidding.record-rejected-bids) rồi trả BidOutcome.Rejected, transaction commit bình thường.
- * Chỉ ObjectOptimisticLockingFailureException (xung đột version) lan ra ngoài để BiddingService retry.
- */
+
 @Component
 class BidTransactionExecutor(
     private val auctionStateRepository: AuctionStateRepository,
@@ -47,11 +37,11 @@ class BidTransactionExecutor(
         state.currentPrice = amount
         state.currentBidderId = bidderId
         state.updatedAt = now
-        auctionStateRepository.save(state) // @Version -> ném ObjectOptimisticLockingFailureException nếu bị race
+        auctionStateRepository.save(state) 
         return BidOutcome.Accepted(BidResponse.from(bid))
     }
 
-    // Thứ tự kiểm tra quyết định thông điệp trả về khi vi phạm nhiều điều kiện cùng lúc.
+    
     private fun rejectionOf(
         state: AuctionState,
         bidderId: UUID,

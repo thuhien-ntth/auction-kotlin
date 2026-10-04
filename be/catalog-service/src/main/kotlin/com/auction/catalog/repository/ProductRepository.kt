@@ -18,10 +18,10 @@ interface ProductRepository : JpaRepository<Product, UUID> {
 
     fun findBySellerIdAndStatus(sellerId: UUID, status: ProductStatus, pageable: Pageable): Page<Product>
 
-    // Product search (USEDS001F003): tìm theo tên trong tập status cho trước, có filter category.
-    // - Người dùng thường: chỉ ACTIVE (đang trong thời gian đấu giá)
-    // - Admin: tất cả sản phẩm mọi trạng thái, xem ProductService.search
-    // Migration V3 tạo index gin(LOWER(title) gin_trgm_ops) khớp đúng biểu thức LOWER(p.title) dưới đây.
+    
+    
+    
+    
     @Query(
         """
         SELECT p FROM Product p
@@ -39,12 +39,12 @@ interface ProductRepository : JpaRepository<Product, UUID> {
 
     fun findByStatus(status: ProductStatus, pageable: Pageable): Page<Product>
 
-    // Admin: danh sách sản phẩm đã được xét duyệt (đã duyệt / bị từ chối)
+    
     fun findByStatusIn(statuses: Collection<ProductStatus>, pageable: Pageable): Page<Product>
 
-    // Dùng bởi AuctionScheduler: sản phẩm đã duyệt (APPROVED) hoặc đang đấu giá (ACTIVE) mà thời gian đấu giá đã hết.
-    // APPROVED cũng được đóng để không sót sản phẩm chưa kịp mở (ví dụ hệ thống tạm dừng qua giờ kết thúc).
-    // Lấy theo lô, hết hạn sớm nhất trước.
+    
+    
+    
     @Query(
         """
         SELECT p FROM Product p
@@ -55,8 +55,8 @@ interface ProductRepository : JpaRepository<Product, UUID> {
     )
     fun findExpired(@Param("now") now: Instant, pageable: Pageable): List<Product>
 
-    // Tự mở đấu giá: APPROVED -> ACTIVE khi đã đến giờ bắt đầu và chưa hết giờ. Một câu UPDATE cho cả lô,
-    // idempotent, an toàn khi chạy nhiều instance. Trả về số sản phẩm vừa được mở.
+    
+    
     @Modifying(clearAutomatically = true)
     @Transactional
     @Query(
@@ -67,7 +67,7 @@ interface ProductRepository : JpaRepository<Product, UUID> {
     )
     fun openStarted(@Param("now") now: Instant): Int
 
-    // Đóng có điều kiện: chỉ đổi khi sản phẩm vẫn ở APPROVED/ACTIVE. Trả về 0 nếu instance khác đã đóng trước.
+    
     @Modifying(clearAutomatically = true)
     @Transactional
     @Query(

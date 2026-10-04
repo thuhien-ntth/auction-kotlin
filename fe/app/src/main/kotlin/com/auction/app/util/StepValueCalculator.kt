@@ -9,8 +9,6 @@ data class StepRange(
 )
 
 object StepValueCalculator {
-
-    // Bảng cấu hình chuẩn (theo USD)
     private val standardRanges = listOf(
         StepRange(
             BigDecimal("0"),
@@ -34,7 +32,6 @@ object StepValueCalculator {
         )
     )
 
-    // Bảng cấu hình VND (khi currentPrice lớn)
     private val vndRanges = listOf(
         StepRange(
             BigDecimal("0"),
@@ -53,7 +50,6 @@ object StepValueCalculator {
         )
     )
 
-    // VND dùng bảng bước giá VND; USD/EUR dùng bảng chuẩn.
     fun getAvailableSteps(currentPrice: BigDecimal, currency: String = "VND"): List<BigDecimal> {
         val ranges = if (currency == "VND" && currentPrice > BigDecimal("100000")) vndRanges else standardRanges
         val range = ranges.firstOrNull { currentPrice >= it.start && currentPrice <= it.end }

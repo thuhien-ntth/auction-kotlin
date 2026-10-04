@@ -5,7 +5,7 @@ import java.math.BigDecimal
 import java.time.Instant
 import java.util.UUID
 
-// Lịch sử mọi lần đặt giá — kể cả các lần bị từ chối (accepted=false), phục vụ audit/View Bidding History.
+
 @Entity
 @Table(name = "bids")
 class Bid(

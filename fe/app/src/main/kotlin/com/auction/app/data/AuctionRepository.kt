@@ -5,16 +5,11 @@ import com.auction.app.network.model.*
 import okhttp3.MultipartBody
 import java.math.BigDecimal
 
-/**
- * Repository trừu tượng hóa data source (AuctionApi + TokenStore).
- * Mọi hàm trả về Result<T> để ViewModel không cần try-catch ở mọi nơi.
- */
 class AuctionRepository(
     private val api: AuctionApi,
     val tokenStore: TokenStore
 ) {
-    // ── Auth ──────────────────────────────────────────────────────────
-
+    // Auth
     private inline fun <T> runApi(block: () -> T): Result<T> = runCatching {
         try {
             block()
@@ -25,7 +20,6 @@ class AuctionRepository(
         } catch (e: java.net.SocketTimeoutException) {
             throw Exception("Máy chủ phản hồi quá lâu, vui lòng thử lại")
         } catch (e: java.io.IOException) {
-            // Không kết nối được máy chủ (mất mạng, sai địa chỉ, chưa chạy adb reverse...)
             throw Exception("Không kết nối được máy chủ, vui lòng kiểm tra mạng và thử lại")
         }
     }
@@ -78,7 +72,7 @@ class AuctionRepository(
         tokenStore.clear()
     }
 
-    // ── Products ─────────────────────────────────────────────────────
+    // Products
 
     suspend fun searchProducts(
         keyword: String?,
@@ -112,7 +106,7 @@ class AuctionRepository(
         api.myProducts(status)
     }
 
-    // ── Bidding ──────────────────────────────────────────────────────
+    // Bidding
 
     suspend fun placeBid(productId: String, amount: BigDecimal): Result<BidResponse> = runApi {
         api.placeBid(productId, PlaceBidRequest(amount))
@@ -130,7 +124,7 @@ class AuctionRepository(
         api.won()
     }
 
-    // ── Admin ────────────────────────────────────────────────────────
+    // Admin
 
     suspend fun getPendingProducts(): Result<PageResponse<ProductSummary>> = runApi {
         api.getPendingProducts()
@@ -162,7 +156,7 @@ class AuctionRepository(
         api.getProfile()
     }
 
-    // ── Categories ───────────────────────────────────────────────────
+    // Categories
 
     suspend fun getCategories(): Result<List<CategoryDto>> = runApi {
         api.getCategories()

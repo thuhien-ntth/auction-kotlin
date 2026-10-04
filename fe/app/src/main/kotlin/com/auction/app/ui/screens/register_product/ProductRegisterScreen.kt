@@ -3,7 +3,6 @@ package com.auction.app.ui.screens.register_product
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import android.widget.Toast
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -24,9 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import java.time.Instant
@@ -42,7 +39,6 @@ import coil.compose.AsyncImage
 import com.auction.app.LocalAppContainer
 import com.auction.app.ui.components.AppScaffold
 import com.auction.app.ui.navigation.Routes
-import com.auction.app.ui.theme.AuctionAppTheme
 
 @Composable
 fun ProductRegisterScreen(navController: NavController) {
@@ -51,9 +47,6 @@ fun ProductRegisterScreen(navController: NavController) {
     val viewModel: ProductRegisterViewModel = viewModel(factory = ProductRegisterViewModel.factory(container.repository))
     val uiState by viewModel.uiState.collectAsState()
 
-    // Photo Picker hệ thống — không cần khai báo permission READ_MEDIA_IMAGES (kể cả trên API < 33,
-    // AndroidX tự fallback sang ACTION_OPEN_DOCUMENT). Chỉ chọn ảnh, upload thật sự diễn ra sau khi
-    // registerProduct() trả về productId (POST /products/{id}/image — xem AuctionApi.kt).
     val pickImageLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia()
     ) { uri -> if (uri != null) viewModel.onImageSelected(uri) }
@@ -137,7 +130,6 @@ fun ProductRegisterScreenContent(
                 )
                 Spacer(modifier = Modifier.height(8.dp))
 
-                // Dropdown danh mục — lấy từ API GET /categories
                 ExposedDropdownMenuBox(
                     expanded = uiState.categoryDropdownExpanded,
                     onExpandedChange = onCategoryDropdownExpandedChange
@@ -172,7 +164,6 @@ fun ProductRegisterScreenContent(
                 }
 
                 Spacer(modifier = Modifier.height(8.dp))
-                // Giá khởi điểm (trên) + dropdown đơn vị tiền tệ VND / USD / EUR (dưới)
                 OutlinedTextField(
                     value = uiState.startPrice,
                     onValueChange = onStartPriceChange,
@@ -235,7 +226,6 @@ fun ProductRegisterScreenContent(
                 Spacer(modifier = Modifier.height(4.dp))
                 Spacer(modifier = Modifier.height(8.dp))
 
-                // Chọn ảnh sản phẩm (tùy chọn) — upload sau khi đăng sản phẩm thành công.
                 Text(
                     "Ảnh sản phẩm (tùy chọn)",
                     style = MaterialTheme.typography.labelLarge,
@@ -296,11 +286,6 @@ fun ProductRegisterScreenContent(
     }
 }
 
-// Chọn thời gian đấu giá bằng Date Picker + Time Picker của Material3 thay vì gõ tay chuỗi ISO-8601 —
-// gõ tay dễ sai định dạng và trước đây người dùng phải tự quy đổi múi giờ VN sang UTC (xem
-// KichBan_Demo_App.md). Composable này hiển thị giờ theo múi giờ của máy (dễ đọc), rồi tự quy đổi
-// sang Instant/UTC đúng định dạng backend yêu cầu (auctionStartAt/auctionEndAt, xem
-// ProductDtos.kt#CreateProductRequest) khi gọi onIsoChange.
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun DateTimePickerField(
@@ -311,14 +296,12 @@ private fun DateTimePickerField(
     val zone = remember { ZoneId.systemDefault() }
     val displayFormatter = remember { DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm") }
 
-    // Parse lại từ chuỗi ISO đã lưu ở uiState để mở lại vẫn thấy đúng giá trị cũ (vd. sau khi xoay màn hình).
     val currentInstant = remember(isoValue) {
         isoValue.trim().ifBlank { null }?.let { runCatching { Instant.parse(it) }.getOrNull() }
     }
 
     var showDatePicker by remember { mutableStateOf(false) }
     var showTimePicker by remember { mutableStateOf(false) }
-    // Ngày đã chọn ở bước 1 (Date Picker), giữ tạm để ghép với giờ chọn ở bước 2 (Time Picker).
     var pendingDate by remember { mutableStateOf<LocalDate?>(null) }
 
     val displayText = currentInstant?.let { displayFormatter.format(it.atZone(zone)) } ?: ""
@@ -361,8 +344,6 @@ private fun DateTimePickerField(
     }
 
     if (showDatePicker) {
-        // DatePicker của Material3 làm việc với mốc UTC-midnight cho ngày được chọn — không dùng
-        // trực tiếp millis này như epoch ở múi giờ máy, phải quy về LocalDate qua ZoneOffset.UTC.
         val todayMidnightUtcMillis = LocalDate.now().atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
         val initialMillis = (currentInstant ?: Instant.now()).atZone(zone).toLocalDate()
             .atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
@@ -402,7 +383,7 @@ private fun DateTimePickerField(
         val timePickerState = rememberTimePickerState(
             initialHour = initialTime.hour,
             initialMinute = initialTime.minute,
-            is24Hour = false // Mặt đồng hồ 1–12 + nút SA/CH; state.hour vẫn trả 0–23
+            is24Hour = false
         )
         Dialog(onDismissRequest = { showTimePicker = false }) {
             Surface(shape = RoundedCornerShape(16.dp), tonalElevation = 6.dp) {
@@ -429,28 +410,5 @@ private fun DateTimePickerField(
                 }
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ProductRegisterScreenPreview() {
-    AuctionAppTheme {
-        ProductRegisterScreenContent(
-            uiState = ProductRegisterUiState(
-                title = "Máy ảnh Leica M11",
-                description = "Hàng chính hãng fullbox 99%",
-                category = "ELECTRONICS",
-                startPrice = "185000000"
-            ),
-            onTitleChange = {},
-            onDescriptionChange = {},
-            onCategoryChange = {},
-            onStartPriceChange = {},
-            onAuctionStartAtChange = {},
-            onAuctionEndAtChange = {},
-            onPickImage = {},
-            onSubmit = {}
-        )
     }
 }

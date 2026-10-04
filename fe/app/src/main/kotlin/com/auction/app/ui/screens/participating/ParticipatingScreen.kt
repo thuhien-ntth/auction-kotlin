@@ -1,7 +1,5 @@
 ﻿package com.auction.app.ui.screens.participating
 
-import android.widget.Toast
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Box
@@ -26,17 +24,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.auction.app.LocalAppContainer
-import com.auction.app.network.model.AuctionStateResponse
 import com.auction.app.ui.components.AppScaffold
 import com.auction.app.ui.components.ProductThumbnail
 import com.auction.app.ui.navigation.Routes
-import com.auction.app.ui.theme.AuctionAppTheme
-import java.math.BigDecimal
 
 @Composable
 fun ParticipatingScreen(navController: NavController, onOpenProduct: (String) -> Unit) {
@@ -98,32 +92,5 @@ fun ParticipatingScreenContent(
                 }
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ParticipatingScreenPreview() {
-    AuctionAppTheme {
-        ParticipatingScreenContent(
-            uiState = ParticipatingUiState(
-                isLoading = false,
-                auctionStates = listOf(
-                    AuctionStateResponse(
-                        productId = "prod-1",
-                        currentPrice = BigDecimal("192000000"),
-                        currentBidderId = "user-bidder-01",
-                        auctionEndAt = "2026-09-25 21:00"
-                    ),
-                    AuctionStateResponse(
-                        productId = "prod-2",
-                        currentPrice = BigDecimal("305000000"),
-                        currentBidderId = "user-bidder-02",
-                        auctionEndAt = "2026-09-26 20:00"
-                    )
-                )
-            ),
-            onOpenProduct = {}
-        )
     }
 }

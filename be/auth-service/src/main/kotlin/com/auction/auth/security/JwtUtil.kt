@@ -10,12 +10,6 @@ import java.util.Date
 import java.util.UUID
 import javax.crypto.SecretKey
 
-/**
- * Access token pattern (JWT) — xem lý do chọn ở ARCHITECTURE_DESIGN.md mục 2.2.
- * auth-service là nơi DUY NHẤT phát hành token (generate). catalog-service và
- * bidding-service chỉ verify lại bằng cùng secret (đọc chung 1 biến môi trường
- * JWT_SECRET) — không tin header do Gateway forward, tự parse lại chữ ký (DC2, mục 5.1).
- */
 @Component
 class JwtUtil(
     @Value("\${jwt.secret}") secret: String,

@@ -12,10 +12,6 @@ import kotlinx.coroutines.runBlocking
 
 private val Context.dataStore by preferencesDataStore(name = "auction_session")
 
-/**
- * Lưu JWT (không phải session server-side) — khớp với Access token pattern phía backend
- * (ARCHITECTURE_DESIGN.md mục 2.2). Logout gọi API rồi mới xoá token cục bộ.
- */
 class TokenStore(private val context: Context) {
     private val keyToken = stringPreferencesKey("access_token")
     private val keyUserId = stringPreferencesKey("user_id")

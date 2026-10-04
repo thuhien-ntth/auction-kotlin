@@ -17,12 +17,7 @@ import java.math.BigDecimal
 import java.time.Instant
 import java.util.UUID
 
-/**
- * Kiểm tra logic tự mở/đóng phiên: gọi bidding-service 1 lần cho cả lô, SOLD/ENDED_NO_BID đúng,
- * và không đụng vào dữ liệu khi bidding-service không phản hồi.
- *
- * Mockito matcher trả về null còn tham số Kotlin là non-null, nên dùng các hàm bọc trả về giá trị thật.
- */
+
 class AuctionSchedulerTest {
 
     private val repo = mock(ProductRepository::class.java)

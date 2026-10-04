@@ -24,7 +24,7 @@ class ProductService(
     private val imageStorageService: ProductImageStorageService,
     private val categoryService: CategoryService
 ) {
-    // Seller đăng sản phẩm (USRPS0010000/0030000) -> luôn PENDING_APPROVAL
+    
     fun register(sellerId: UUID, request: CreateProductRequest): ProductResponse {
         val startAt = request.auctionStartAt!!
         val endAt = request.auctionEndAt!!
@@ -58,7 +58,7 @@ class ProductService(
         return ProductResponse.from(saved, saved.startPrice)
     }
 
-    // Cập nhật sản phẩm - chỉ cho phép khi sản phẩm đang chờ duyệt (PENDING_APPROVAL)
+    
     fun update(sellerId: UUID, productId: UUID, request: CreateProductRequest): ProductResponse {
         val product = productRepository.findById(productId)
             .orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "Không tìm thấy sản phẩm") }
@@ -70,8 +70,8 @@ class ProductService(
         }
         val startAt = request.auctionStartAt!!
         val endAt = request.auctionEndAt!!
-        // Chỉ kiểm tra điều kiện thời gian khi người bán THỰC SỰ đổi thời gian.
-        // Mở form rồi bấm "Cập nhật" ngay (không sửa gì) thì vẫn lưu được, kể cả khi thời gian cũ đã qua.
+        
+        
         val timeChanged = startAt.compareTo(product.auctionStartAt) != 0 || endAt.compareTo(product.auctionEndAt) != 0
         if (timeChanged) {
             if (!endAt.isAfter(startAt)) {
@@ -103,19 +103,19 @@ class ProductService(
         return ProductResponse.from(saved, saved.startPrice)
     }
 
-    // Product search (USEDS001F003)
-    // - Người dùng thường / chưa đăng nhập: chỉ sản phẩm ACTIVE (đang trong thời gian đấu giá)
-    // - Admin: tất cả sản phẩm mọi trạng thái (chờ duyệt, đã duyệt, đang đấu giá, đã kết thúc,
-    //   bị từ chối kèm rejectionReason). Việc duyệt thao tác ở màn "Duyệt sản phẩm" (/admin/products/pending).
+    
+    
+    
+    
     fun search(keyword: String?, category: String?, isAdmin: Boolean, pageable: Pageable): Page<ProductSummaryResponse> {
         val statuses = if (isAdmin) ALL_STATUSES else PUBLIC_STATUSES
         val page = productRepository.search(keyword?.trim()?.ifBlank { null }, category, statuses, pageable)
-        // 1 lời gọi batch cho cả trang để lấy số người tham gia (tránh N+1 cross-service call)
+        
         val counts = biddingClient.getBidderCounts(page.content.mapNotNull { it.id })
         return page.map { ProductSummaryResponse.from(it).copy(bidderCount = counts[it.id] ?: 0L) }
     }
 
-    // Product detail (USEDS0030000) — ghép currentPrice từ bidding-service
+    
     fun getDetail(productId: UUID): ProductResponse {
         val product = productRepository.findById(productId)
             .orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "Không tìm thấy sản phẩm") }
@@ -123,7 +123,7 @@ class ProductService(
         return ProductResponse.from(product, currentPrice)
     }
 
-    // Exhibition management (USMPS0130000, gộp từ USMPS0080000..USMPS0120000)
+    
     fun myProducts(sellerId: UUID, status: ProductStatus?, pageable: Pageable): Page<ProductSummaryResponse> {
         val page = if (status != null) {
             productRepository.findBySellerIdAndStatus(sellerId, status, pageable)
@@ -133,8 +133,8 @@ class ProductService(
         return page.map(ProductSummaryResponse::from)
     }
 
-    // Upload/thay ảnh sản phẩm (USRPS0010000 bổ sung) — chỉ chủ sở hữu (seller) mới được upload,
-    // không giới hạn theo status: seller có thể đổi ảnh bất cứ lúc nào kể cả sau khi ACTIVE.
+    
+    
     fun uploadImage(sellerId: UUID, productId: UUID, file: MultipartFile): ProductResponse {
         val product = productRepository.findById(productId)
             .orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "Không tìm thấy sản phẩm") }
@@ -148,8 +148,8 @@ class ProductService(
         return ProductResponse.from(saved, currentPrice)
     }
 
-    // Phục vụ GET /products/{id}/image — public (không requireUser), khớp với việc
-    // GET /products/{id} cũng đang public. Trả kèm Content-Type suy ra từ đuôi file đã lưu.
+    
+    
     fun getImageResource(productId: UUID): Pair<Resource, MediaType> {
         val product = productRepository.findById(productId)
             .orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "Không tìm thấy sản phẩm") }
@@ -158,13 +158,13 @@ class ProductService(
         return imageStorageService.load(path) to imageStorageService.contentTypeFor(path)
     }
 
-    // ---- Admin ----
+    
 
     fun pendingApproval(pageable: Pageable): Page<ProductSummaryResponse> =
         productRepository.findByStatus(ProductStatus.PENDING_APPROVAL, pageable).map(ProductSummaryResponse::from)
 
-    // Admin: sản phẩm đã xét duyệt. result = APPROVED (đã duyệt, gồm cả các trạng thái sau duyệt:
-    // ACTIVE/SOLD/ENDED_NO_BID), REJECTED (bị từ chối, kèm lý do), null = cả hai. Mặc định mới xử lý trước.
+    
+    
     fun reviewedProducts(result: String?, pageable: Pageable): Page<ProductSummaryResponse> {
         val approved = listOf(ProductStatus.APPROVED, ProductStatus.ACTIVE, ProductStatus.SOLD, ProductStatus.ENDED_NO_BID)
         val statuses = when (result?.uppercase()) {
@@ -208,7 +208,7 @@ class ProductService(
         return product
     }
 
-    // ---- Internal (gọi bởi bidding-service) ----
+    
 
     fun internalGet(productId: UUID): InternalProductInfo {
         val product = productRepository.findById(productId)
@@ -227,7 +227,7 @@ class ProductService(
     private companion object {
         val PUBLIC_STATUSES = listOf(ProductStatus.ACTIVE)
         val ALL_STATUSES = ProductStatus.entries.toList()
-        // Hardcode theo yêu cầu: VND, Đô la Mỹ, Euro
+        
         val SUPPORTED_CURRENCIES = setOf("VND", "USD", "EUR")
     }
 }

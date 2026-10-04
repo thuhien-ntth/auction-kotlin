@@ -14,7 +14,7 @@ fun HttpServletRequest.requireUser(): CurrentUser {
     return CurrentUser(UUID.fromString(userId), isAdmin)
 }
 
-// Admin chỉ quản trị: không được đăng/sở hữu sản phẩm, không được đặt giá.
+
 fun HttpServletRequest.requireMember(): CurrentUser {
     val user = requireUser()
     if (user.isAdmin) throw ResponseStatusException(HttpStatus.FORBIDDEN, "Tài khoản quản trị không được dùng chức năng này")

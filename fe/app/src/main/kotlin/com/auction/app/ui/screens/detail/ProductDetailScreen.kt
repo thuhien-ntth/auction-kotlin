@@ -1,7 +1,5 @@
 ﻿package com.auction.app.ui.screens.detail
 
-import android.widget.Toast
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -9,7 +7,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -22,23 +19,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.auction.app.LocalAppContainer
-import com.auction.app.network.model.BidResponse
-import com.auction.app.network.model.ProductDetail
 import com.auction.app.ui.components.ProductThumbnail
 import com.auction.app.ui.components.StatusChip
 import com.auction.app.ui.navigation.Routes
-import com.auction.app.ui.theme.AuctionAppTheme
 import com.auction.app.ui.theme.AuctionGold90
 import java.math.BigDecimal
 
-/**
- * Screen Product Detail: Khớp với đặc tả Bidding Manual (Sticky Bottom Bidding Bar & Confirmation Popup).
- */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProductDetailScreen(productId: String, navController: NavController) {
@@ -78,7 +68,7 @@ fun ProductDetailScreenContent(
     onDismissRejectDialog: () -> Unit = {},
     onReject: (String) -> Unit = {}
 ) {
-    val d = uiState.detail
+    val detail = uiState.detail
     val currency = uiState.detail?.currency ?: "VND"
 
     com.auction.app.ui.components.AppScaffold(
@@ -97,7 +87,7 @@ fun ProductDetailScreenContent(
                         CircularProgressIndicator()
                     }
                 } else {
-                if (d == null) {
+                if (detail == null) {
                     Text(uiState.message ?: "Không tìm thấy sản phẩm.", modifier = Modifier.padding(16.dp))
                 } else {
                     LazyColumn(
@@ -108,27 +98,27 @@ fun ProductDetailScreenContent(
                     ) {
                         item {
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                ProductThumbnail(size = 80.dp, imageUrl = d.imageUrl)
+                                ProductThumbnail(size = 80.dp, imageUrl = detail.imageUrl)
                                 Column(modifier = Modifier.padding(start = 12.dp).weight(1f)) {
                                     Text(
-                                        text = d.title,
+                                        text = detail.title,
                                         style = MaterialTheme.typography.headlineSmall,
                                         fontWeight = FontWeight.Bold
                                     )
                                     Text(
-                                        text = d.category,
+                                        text = detail.category,
                                         style = MaterialTheme.typography.bodyMedium,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
                                     Spacer(modifier = Modifier.padding(2.dp))
                                     Row(verticalAlignment = Alignment.CenterVertically) {
-                                        StatusChip(status = d.status)
+                                        StatusChip(status = detail.status)
                                     }
                                 }
                             }
                         }
 
-                        if (uiState.isCurrentHighestBidder && d.status == "ACTIVE") {
+                        if (uiState.isCurrentHighestBidder && detail.status == "ACTIVE") {
                             item {
                                 Row(
                                     modifier = Modifier
@@ -148,7 +138,7 @@ fun ProductDetailScreenContent(
                         }
 
                         item {
-                            Text(text = d.description, style = MaterialTheme.typography.bodyLarge)
+                            Text(text = detail.description, style = MaterialTheme.typography.bodyLarge)
                         }
 
                         item {
@@ -160,20 +150,20 @@ fun ProductDetailScreenContent(
                                         color = MaterialTheme.colorScheme.onPrimaryContainer
                                     )
                                     Text(
-                                        text = com.auction.app.util.FormatUtils.formatCurrency(d.currentPrice, currency),
+                                        text = com.auction.app.util.FormatUtils.formatCurrency(detail.currentPrice, currency),
                                         style = MaterialTheme.typography.headlineLarge,
                                         fontWeight = FontWeight.Bold,
                                         color = MaterialTheme.colorScheme.onPrimaryContainer
                                     )
                                     Text(
-                                        text = "Giá khởi điểm: ${com.auction.app.util.FormatUtils.formatCurrency(d.startPrice, currency)}",
+                                        text = "Giá khởi điểm: ${com.auction.app.util.FormatUtils.formatCurrency(detail.startPrice, currency)}",
                                         style = MaterialTheme.typography.bodySmall,
                                         color = MaterialTheme.colorScheme.onPrimaryContainer
                                     )
-                                    if (d.status == "REJECTED" && d.rejectionReason != null) {
+                                    if (detail.status == "REJECTED" && detail.rejectionReason != null) {
                                         Spacer(modifier = Modifier.padding(4.dp))
                                         Text(
-                                            text = "Lý do từ chối: ${d.rejectionReason}",
+                                            text = "Lý do từ chối: ${detail.rejectionReason}",
                                             color = MaterialTheme.colorScheme.error
                                         )
                                     }
@@ -218,11 +208,10 @@ fun ProductDetailScreenContent(
                         }
                     }
                 }
-                } // Close else block
-            } // Close Box(weight(1f))
+                }
+            }
 
-                        // User creator: sản phẩm đang chờ duyệt -> nút Chỉnh sửa
-            if (d != null && d.status == "PENDING_APPROVAL" && uiState.myUserId == d.sellerId && !uiState.isAdmin) {
+            if (detail != null && detail.status == "PENDING_APPROVAL" && uiState.myUserId == detail.sellerId && !uiState.isAdmin) {
                 Surface(
                     shadowElevation = 8.dp,
                     color = MaterialTheme.colorScheme.surface,
@@ -234,15 +223,14 @@ fun ProductDetailScreenContent(
                             .padding(horizontal = 16.dp, vertical = 12.dp)
                     ) {
                         Button(
-                            onClick = { navController.navigate(Routes.productEdit(d.id)) },
+                            onClick = { navController.navigate(Routes.productEdit(detail.id)) },
                             modifier = Modifier.fillMaxWidth()
                         ) { Text("Chỉnh sửa thông tin") }
                     }
                 }
             }
 
-            // Admin: sản phẩm đang chờ duyệt -> 2 nút Từ chối / Chấp nhận
-            if (d != null && uiState.isAdmin && d.status == "PENDING_APPROVAL") {
+            if (detail != null && uiState.isAdmin && detail.status == "PENDING_APPROVAL") {
                 Surface(
                     shadowElevation = 8.dp,
                     color = MaterialTheme.colorScheme.surface,
@@ -270,9 +258,8 @@ fun ProductDetailScreenContent(
                 }
             }
 
-            // Người bán không được đấu giá sản phẩm của chính mình -> thay thanh đặt giá bằng thông báo
-            val isMyProduct = d != null && uiState.myUserId != null && uiState.myUserId == d.sellerId
-            if (d != null && d.status == "ACTIVE" && !uiState.isAdmin && isMyProduct) {
+            val isMyProduct = detail != null && uiState.myUserId != null && uiState.myUserId == detail.sellerId
+            if (detail != null && detail.status == "ACTIVE" && !uiState.isAdmin && isMyProduct) {
                 Surface(
                     shadowElevation = 8.dp,
                     color = MaterialTheme.colorScheme.surfaceVariant,
@@ -288,8 +275,7 @@ fun ProductDetailScreenContent(
                 }
             }
 
-            // Sticky Bottom Bidding Bar (admin và chính người bán không được đặt giá -> ẩn)
-            if (d != null && d.status == "ACTIVE" && !uiState.isAdmin && !isMyProduct) {
+            if (detail != null && detail.status == "ACTIVE" && !uiState.isAdmin && !isMyProduct) {
                 Surface(
                     shadowElevation = 8.dp,
                     color = MaterialTheme.colorScheme.surface,
@@ -300,7 +286,6 @@ fun ProductDetailScreenContent(
                             .fillMaxWidth()
                             .padding(horizontal = 16.dp, vertical = 12.dp)
                     ) {
-                        // Flag Quyền trúng đấu giá
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier.padding(bottom = 6.dp)
@@ -328,7 +313,6 @@ fun ProductDetailScreenContent(
                             }
                         }
 
-                        // Lựa chọn bước nhảy
                         Text(
                             text = "Chọn bước nhảy:",
                             style = MaterialTheme.typography.labelMedium,
@@ -357,7 +341,6 @@ fun ProductDetailScreenContent(
 
                         Spacer(modifier = Modifier.height(8.dp))
 
-                        // Nút Đặt giá
                         Button(
                             onClick = onShowConfirmDialog,
                             enabled = !uiState.isPlacing && !uiState.isCurrentHighestBidder,
@@ -374,7 +357,6 @@ fun ProductDetailScreenContent(
         }
     }
 
-    // Admin: popup nhập lý do từ chối
     if (uiState.showRejectDialog) {
         var reason by remember { mutableStateOf("") }
         AlertDialog(
@@ -400,8 +382,7 @@ fun ProductDetailScreenContent(
         )
     }
 
-    // Popup Bidding Confirmation (Khớp với spec 2. Popup: Bidding Confirmation)
-    if (uiState.showConfirmDialog && d != null) {
+    if (uiState.showConfirmDialog && detail != null) {
         AlertDialog(
             onDismissRequest = onDismissConfirmDialog,
             title = {
@@ -414,13 +395,13 @@ fun ProductDetailScreenContent(
             text = {
                 Column {
                     Text(
-                        text = "Sản phẩm đấu giá: ${d.title} (${d.category})",
+                        text = "Sản phẩm đấu giá: ${detail.title} (${detail.category})",
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.Medium
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = "Giá hiện tại: ${com.auction.app.util.FormatUtils.formatCurrency(d.currentPrice, currency)}",
+                        text = "Giá hiện tại: ${com.auction.app.util.FormatUtils.formatCurrency(detail.currentPrice, currency)}",
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -448,138 +429,6 @@ fun ProductDetailScreenContent(
                     Text("Hủy")
                 }
             }
-        )
-    }
-}
-
-@Preview(showBackground = true, name = "1. Loading")
-@Composable
-fun ProductDetailScreenLoadingPreview() {
-    AuctionAppTheme {
-        ProductDetailScreenContent(
-            uiState = ProductDetailUiState(isLoading = true),
-            targetBidPrice = BigDecimal.ZERO,
-            navController = androidx.navigation.compose.rememberNavController(),
-            onNavigateBack = {}, onSelectStep = {}, onShowConfirmDialog = {}, onDismissConfirmDialog = {}, onPlaceBid = {}
-        )
-    }
-}
-
-@Preview(showBackground = true, name = "2. Error / Not Found")
-@Composable
-fun ProductDetailScreenErrorPreview() {
-    AuctionAppTheme {
-        ProductDetailScreenContent(
-            uiState = ProductDetailUiState(
-                isLoading = false,
-                detail = null,
-                message = "Không tìm thấy sản phẩm."
-            ),
-            targetBidPrice = BigDecimal.ZERO,
-            navController = androidx.navigation.compose.rememberNavController(),
-            onNavigateBack = {}, onSelectStep = {}, onShowConfirmDialog = {}, onDismissConfirmDialog = {}, onPlaceBid = {}
-        )
-    }
-}
-
-@Preview(showBackground = true, name = "3. Active - Not Highest Bidder")
-@Composable
-fun ProductDetailScreenActiveNotHighestPreview() {
-    AuctionAppTheme {
-        ProductDetailScreenContent(
-            uiState = ProductDetailUiState(
-                isLoading = false,
-                detail = ProductDetail(
-                    id = "prod-1", sellerId = "user-seller-01", title = "Máy ảnh Leica M11",
-                    description = "Hàng chính hãng fullbox 99%.", category = "ELECTRONICS",
-                    startPrice = BigDecimal("185000000"), currentPrice = BigDecimal("192000000"),
-                    status = "ACTIVE", rejectionReason = null, createdAt = "2026-09-01T08:00:00Z",
-                    auctionStartAt = null, auctionEndAt = "2026-09-25 21:00", imageUrl = null
-                ),
-                history = listOf(
-                    BidResponse("b1", "prod-1", "user-other", BigDecimal("192000000"), true, "2026-09-12T15:30:00Z")
-                ),
-                availableSteps = listOf(BigDecimal("5000000"), BigDecimal("10000000"), BigDecimal("20000000")),
-                selectedStep = BigDecimal("5000000"),
-                isCurrentHighestBidder = false
-            ),
-            targetBidPrice = BigDecimal("197000000"),
-            navController = androidx.navigation.compose.rememberNavController(),
-            onNavigateBack = {}, onSelectStep = {}, onShowConfirmDialog = {}, onDismissConfirmDialog = {}, onPlaceBid = {}
-        )
-    }
-}
-
-@Preview(showBackground = true, name = "4. Active - Highest Bidder")
-@Composable
-fun ProductDetailScreenActiveHighestPreview() {
-    AuctionAppTheme {
-        ProductDetailScreenContent(
-            uiState = ProductDetailUiState(
-                isLoading = false,
-                detail = ProductDetail(
-                    id = "prod-1", sellerId = "user-seller-01", title = "Máy ảnh Leica M11",
-                    description = "Hàng chính hãng fullbox 99%.", category = "ELECTRONICS",
-                    startPrice = BigDecimal("185000000"), currentPrice = BigDecimal("192000000"),
-                    status = "ACTIVE", rejectionReason = null, createdAt = "2026-09-01T08:00:00Z",
-                    auctionStartAt = null, auctionEndAt = "2026-09-25 21:00", imageUrl = null
-                ),
-                history = listOf(
-                    BidResponse("b1", "prod-1", "user-me", BigDecimal("192000000"), true, "2026-09-12T15:30:00Z")
-                ),
-                availableSteps = listOf(BigDecimal("5000000"), BigDecimal("10000000"), BigDecimal("20000000")),
-                selectedStep = BigDecimal("5000000"),
-                isCurrentHighestBidder = true
-            ),
-            targetBidPrice = BigDecimal("197000000"),
-            navController = androidx.navigation.compose.rememberNavController(),
-            onNavigateBack = {}, onSelectStep = {}, onShowConfirmDialog = {}, onDismissConfirmDialog = {}, onPlaceBid = {}
-        )
-    }
-}
-
-@Preview(showBackground = true, name = "5. Confirm Dialog")
-@Composable
-fun ProductDetailScreenConfirmDialogPreview() {
-    AuctionAppTheme {
-        ProductDetailScreenContent(
-            uiState = ProductDetailUiState(
-                isLoading = false,
-                detail = ProductDetail(
-                    id = "prod-1", sellerId = "user-seller-01", title = "Máy ảnh Leica M11",
-                    description = "Hàng chính hãng fullbox 99%.", category = "ELECTRONICS",
-                    startPrice = BigDecimal("185000000"), currentPrice = BigDecimal("192000000"),
-                    status = "ACTIVE", rejectionReason = null, createdAt = "2026-09-01T08:00:00Z",
-                    auctionStartAt = null, auctionEndAt = "2026-09-25 21:00", imageUrl = null
-                ),
-                showConfirmDialog = true,
-                isCurrentHighestBidder = false
-            ),
-            targetBidPrice = BigDecimal("197000000"),
-            navController = androidx.navigation.compose.rememberNavController(),
-            onNavigateBack = {}, onSelectStep = {}, onShowConfirmDialog = {}, onDismissConfirmDialog = {}, onPlaceBid = {}
-        )
-    }
-}
-
-@Preview(showBackground = true, name = "6. Rejected")
-@Composable
-fun ProductDetailScreenRejectedPreview() {
-    AuctionAppTheme {
-        ProductDetailScreenContent(
-            uiState = ProductDetailUiState(
-                isLoading = false,
-                detail = ProductDetail(
-                    id = "prod-2", sellerId = "user-seller-01", title = "Đồng hồ Fake",
-                    description = "Hàng siêu cấp rep 1:1", category = "JEWELRY",
-                    startPrice = BigDecimal("5000000"), currentPrice = BigDecimal("5000000"),
-                    status = "REJECTED", rejectionReason = "Sản phẩm không chính hãng, vi phạm chính sách.",
-                    createdAt = "2026-09-01T08:00:00Z", auctionStartAt = null, auctionEndAt = null, imageUrl = null
-                )
-            ),
-            targetBidPrice = BigDecimal.ZERO,
-            navController = androidx.navigation.compose.rememberNavController(),
-            onNavigateBack = {}, onSelectStep = {}, onShowConfirmDialog = {}, onDismissConfirmDialog = {}, onPlaceBid = {}
         )
     }
 }

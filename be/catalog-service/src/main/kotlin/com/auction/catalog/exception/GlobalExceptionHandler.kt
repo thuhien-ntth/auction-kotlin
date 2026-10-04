@@ -28,19 +28,19 @@ class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiError(400, message))
     }
 
-    // JSON sai định dạng (vd: Instant/số không parse được, body rỗng) là lỗi của client -> 400, không phải 500.
+    
     @ExceptionHandler(HttpMessageNotReadableException::class)
     fun handleUnreadable(ex: HttpMessageNotReadableException): ResponseEntity<ApiError> =
         ResponseEntity.status(HttpStatus.BAD_REQUEST)
             .body(ApiError(400, "Dữ liệu gửi lên sai định dạng"))
 
-    // Vượt spring.servlet.multipart.max-file-size (8MB) -> 413 thay vì 500 chung chung.
+    
     @ExceptionHandler(MaxUploadSizeExceededException::class)
     fun handleTooLarge(ex: MaxUploadSizeExceededException): ResponseEntity<ApiError> =
         ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE)
             .body(ApiError(413, "File tải lên quá lớn (tối đa 8MB)"))
 
-    // Tham số path/query sai kiểu (vd. id không phải UUID) -> 400 thay vì 500
+    
     @ExceptionHandler(org.springframework.web.method.annotation.MethodArgumentTypeMismatchException::class)
     fun handleTypeMismatch(ex: org.springframework.web.method.annotation.MethodArgumentTypeMismatchException): ResponseEntity<ApiError> =
         ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiError(400, "Tham số '${ex.name}' không hợp lệ"))
@@ -56,7 +56,7 @@ class GlobalExceptionHandler {
         val log = org.slf4j.LoggerFactory.getLogger(GlobalExceptionHandler::class.java)
     }
 
-    // Thông báo tiếng Việt mặc định khi ResponseStatusException không kèm reason
+    
     private fun defaultMessageFor(status: Int): String = when (status) {
         400 -> "Yêu cầu không hợp lệ"
         401 -> "Vui lòng đăng nhập"

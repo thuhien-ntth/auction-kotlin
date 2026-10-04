@@ -1,6 +1,5 @@
 package com.auction.app.ui.screens.search
 
-import android.widget.Toast
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -22,21 +21,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import androidx.compose.ui.platform.LocalContext
 import com.auction.app.LocalAppContainer
 import com.auction.app.ui.components.AppScaffold
 import com.auction.app.ui.components.NjAuctionItemCard
 import com.auction.app.ui.navigation.Routes
 import com.auction.app.ui.theme.*
 
-import androidx.compose.ui.tooling.preview.Preview
-import com.auction.app.network.model.ProductSummary
-import com.auction.app.ui.theme.AuctionAppTheme
-import java.math.BigDecimal
-
-/**
- * Auction: Product search — tái dựng chuẩn 100% theo mẫu template NJ AUCTION (media_1789270421505.png).
- */
 @Composable
 fun ProductSearchScreen(navController: NavController, onOpenProduct: (String) -> Unit) {
     val container = LocalAppContainer.current
@@ -151,38 +141,6 @@ fun ProductSearchScreenContent(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun ProductSearchScreenPreview() {
-    AuctionAppTheme {
-        ProductSearchScreenContent(
-            uiState = ProductSearchUiState(
-                keyword = "Leica",
-                products = listOf(
-                    ProductSummary(
-                        id = "1", title = "Máy ảnh Leica M11", category = "ELECTRONICS",
-                        startPrice = BigDecimal("185000000"), status = "ACTIVE",
-                        auctionStartAt = null, auctionEndAt = null, imageUrl = null
-                    )
-                ),
-                isLoading = false,
-                currentPage = 1,
-                totalPages = 2,
-                totalElements = 12L
-            ),
-            navController = null,
-            onKeywordChange = {},
-            onSearch = {},
-            onPageChange = {},
-            onOpenProduct = {}
-        )
-    }
-}
-
-/**
- * Thanh phân trang góc trên và dưới chuẩn theo mockup template NJ AUCTION.
- * Số nút trang lấy theo totalPages thật (0 sản phẩm -> chỉ 1 trang), tối đa 5 nút quanh trang hiện tại.
- */
 @Composable
 fun PaginationBar(
     currentPage: Int,
@@ -202,7 +160,6 @@ fun PaginationBar(
         val end = start + totalItems - 1
         "$start-$end/$totalElements sản phẩm"
     }
-    // Cửa sổ tối đa 5 trang quanh trang hiện tại
     val windowSize = 5
     val first = (current - windowSize / 2).coerceIn(1, (pages - windowSize + 1).coerceAtLeast(1))
     val last = (first + windowSize - 1).coerceAtMost(pages)

@@ -5,8 +5,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
-// Dùng font hệ thống mặc định (không nhúng font riêng) — đúng tinh thần khung tối thiểu,
-// nhưng vẫn khai báo Typography rõ ràng thay vì Typography() mặc định trống để chủ động cỡ chữ.
 private val base = Typography()
 
 val AppTypography = Typography(

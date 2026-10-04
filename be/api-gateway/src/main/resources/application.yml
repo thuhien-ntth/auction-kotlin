@@ -19,8 +19,6 @@ spring:
           filters:
             - StripPrefix=1
 
-        # Route cụ thể (bids) phải đứng TRƯỚC route chung /api/products/** (order nhỏ hơn = ưu tiên hơn)
-        # để không bị route chung "nuốt mất" match.
         - id: bidding-bids
           uri: ${BIDDING_SERVICE_URL:http://localhost:8083}
           order: 1

@@ -28,7 +28,7 @@ data class AuctionStateResponse(
     val currentBidderId: UUID?,
     val auctionEndAt: Instant,
     val currency: String = "VND",
-    // Ghép từ catalog-service (batch) để app hiển thị đúng tên + ảnh
+    
     val title: String? = null,
     val imageUrl: String? = null
 ) {

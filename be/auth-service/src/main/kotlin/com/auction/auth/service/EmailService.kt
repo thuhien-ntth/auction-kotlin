@@ -14,15 +14,7 @@ class EmailService(
     fun sendVerificationEmail(toEmail: String, token: String) {
         val subject = "Xác nhận đăng ký tài khoản Auction App"
         val body = "Mã xác nhận của bạn là: $token\n\nVui lòng nhập mã này trên ứng dụng để hoàn tất đăng ký."
-        
-        // Luôn in ra console để dễ test trong môi trường dev
-        logger.info("=========================================")
-        logger.info("EMAIL MOCK/LOG:")
-        logger.info("To: $toEmail")
-        logger.info("Subject: $subject")
-        logger.info("Body:\n$body")
-        logger.info("=========================================")
-
+       
         try {
             val message = SimpleMailMessage()
             message.setTo(toEmail)

@@ -16,17 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
-
-/**
- * Toast dùng chung toàn app: hiện ở góc trên bên phải, bấm dấu X để tắt, tự tắt sau 5 giây.
- * Dùng: val toast = LocalToastState.current; toast.show("..."); toast.show("...", isError = false)
- */
 class ToastState {
     var message by mutableStateOf<String?>(null)
         private set
     var isError by mutableStateOf(true)
         private set
-    // Tăng mỗi lần show -> cùng 1 nội dung hiện lại lần 2 vẫn reset đếm 5 giây
     var id by mutableStateOf(0L)
         private set
 

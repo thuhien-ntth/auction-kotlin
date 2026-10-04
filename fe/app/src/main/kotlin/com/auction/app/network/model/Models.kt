@@ -1,10 +1,6 @@
 package com.auction.app.network.model
 
 import java.math.BigDecimal
-
-// Khá»›p field name JSON vá»›i response phÃ­a backend (ARCHITECTURE_DESIGN.md má»¥c 2.2/3) â€”
-// má»—i bÃªn tá»± giá»¯ model riÃªng, khÃ´ng share code giá»¯a app vÃ  backend (Ä‘Ãºng tinh tháº§n MSA).
-
 data class RegisterRequest(
     val email: String,
     val password: String,

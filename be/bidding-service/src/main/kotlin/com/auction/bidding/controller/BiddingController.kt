@@ -16,7 +16,7 @@ import java.util.UUID
 @RestController
 class BiddingController(private val biddingService: BiddingService) {
 
-    // Manual bidding — POST /api/products/{id}/bids
+    
     @PostMapping("/products/{id}/bids")
     fun placeBid(
         request: HttpServletRequest,
@@ -27,19 +27,19 @@ class BiddingController(private val biddingService: BiddingService) {
         return ResponseEntity.ok(biddingService.placeBid(id, user.id, body.amount))
     }
 
-    // View Bidding History — GET /api/products/{id}/bids
+    
     @GetMapping("/products/{id}/bids")
     fun history(@PathVariable id: UUID, pageable: Pageable): Page<BidResponse> =
         biddingService.history(id, pageable)
 
-    // Participating list — GET /api/my/bids/participating
+    
     @GetMapping("/my/bids/participating")
     fun participating(request: HttpServletRequest, pageable: Pageable): Page<AuctionStateResponse> {
         val user = request.requireMember()
         return biddingService.participating(user.id, pageable)
     }
 
-    // Won list — GET /api/my/bids/won
+    
     @GetMapping("/my/bids/won")
     fun won(request: HttpServletRequest, pageable: Pageable): Page<AuctionStateResponse> {
         val user = request.requireMember()

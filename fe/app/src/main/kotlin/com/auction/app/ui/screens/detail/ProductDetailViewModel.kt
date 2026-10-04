@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.auction.app.data.AuctionRepository
-import com.auction.app.network.model.PlaceBidRequest
 import com.auction.app.util.StepValueCalculator
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -12,8 +11,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
-import java.text.NumberFormat
-import java.util.Locale
 
 class ProductDetailViewModel(
     private val repository: AuctionRepository,
@@ -36,8 +33,6 @@ class ProductDetailViewModel(
             }
         }
     }
-
-    // ---- Admin: duyệt / từ chối sản phẩm PENDING_APPROVAL ----
     fun approveProduct() {
         _uiState.update { it.copy(isReviewing = true, message = null) }
         viewModelScope.launch {

@@ -38,7 +38,6 @@ class ProductEditViewModel(private val repository: AuctionRepository, private va
     private fun loadProductData() {
         viewModelScope.launch {
             repository.getProduct(productId).onSuccess { product ->
-                // Strip phần thập phân thừa (.00) nếu là số nguyên
                 val priceStr = product.startPrice.let {
                     if (it.stripTrailingZeros().scale() <= 0) it.toBigInteger().toString()
                     else it.toPlainString()

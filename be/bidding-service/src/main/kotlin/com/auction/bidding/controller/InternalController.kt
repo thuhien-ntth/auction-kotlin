@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController
 import java.math.BigDecimal
 import java.util.UUID
 
-// Chỉ gọi trong docker network nội bộ và yêu cầu header X-Internal-Token (kiểm tra ở JwtAuthFilter).
-// Dùng bởi catalog-service: đọc giá (API composition) và lấy kết quả phiên (AuctionScheduler).
+
+
 @RestController
 @RequestMapping("/internal")
 class InternalController(
@@ -23,7 +23,7 @@ class InternalController(
     @GetMapping("/products/{id}/current-price")
     fun currentPrice(@PathVariable id: UUID): CurrentPriceResponse {
         val state = auctionStateRepository.findById(id)
-        // Chưa có bid nào -> chưa có AuctionState -> coi như chưa có giá hiện tại (catalog-service tự fallback về startPrice)
+        
         return CurrentPriceResponse(state.map { it.currentPrice }.orElse(null))
     }
 
@@ -36,8 +36,8 @@ class InternalController(
         )
     }
 
-    // Phiên bản batch của /result cho AuctionScheduler: 1 lời gọi cho cả lô sản phẩm thay vì N lời gọi.
-    // Sản phẩm không có trong kết quả = chưa từng có auction_state = chưa có bid nào.
+    
+    
     @PostMapping("/products/results")
     fun results(@RequestBody body: ResultsRequest): List<AuctionResultItem> {
         val ids = body.productIds.distinct().take(MAX_BATCH)
@@ -46,7 +46,7 @@ class InternalController(
         }
     }
 
-    // Batch: số người tham gia đấu giá cho cả trang danh sách sản phẩm (catalog gọi 1 lần / trang).
+    
     @PostMapping("/products/bidder-counts")
     fun bidderCounts(@RequestBody body: ResultsRequest): List<BidderCountItem> {
         val ids = body.productIds.distinct().take(MAX_BATCH)

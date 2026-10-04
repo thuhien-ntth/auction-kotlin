@@ -12,8 +12,8 @@ data class ProductEditUiState(
     val currencyDropdownExpanded: Boolean = false,
     val auctionStartAt: String = "",
     val auctionEndAt: String = "",
-    val imageUri: Uri? = null,          // ảnh mới user vừa chọn từ thiết bị
-    val existingImageUrl: String? = null, // ảnh đã có trên server
+    val imageUri: Uri? = null,
+    val existingImageUrl: String? = null,
     val isSubmitting: Boolean = false,
     val message: String? = null,
     val messageIsError: Boolean = false,

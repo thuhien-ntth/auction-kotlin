@@ -16,7 +16,6 @@ data class ProductDetailUiState(
     val showConfirmDialog: Boolean = false,
     val isCurrentHighestBidder: Boolean = false,
     val myUserId: String? = null,
-    // Admin: duyệt / từ chối sản phẩm đang chờ duyệt ngay tại màn chi tiết
     val isAdmin: Boolean = false,
     val isReviewing: Boolean = false,
     val showRejectDialog: Boolean = false

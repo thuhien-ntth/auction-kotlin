@@ -1,7 +1,5 @@
 package com.auction.app.ui.screens.won
 
-import android.widget.Toast
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Box
@@ -27,23 +25,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.auction.app.LocalAppContainer
-import com.auction.app.network.model.AuctionStateResponse
 import com.auction.app.ui.components.AppScaffold
 import com.auction.app.ui.navigation.Routes
-import com.auction.app.ui.theme.AuctionAppTheme
 import com.auction.app.ui.theme.AuctionGold40
 import com.auction.app.ui.theme.AuctionGold90
-import java.math.BigDecimal
 
-/**
- * Product list: Won — phỏng theo màn "Sản phẩm đã thắng" (Won Item List) trong mockup spec, dùng tông vàng
- * đồng (secondary) để nhấn mạnh sản phẩm đã thắng, tương tự banner "Highest Bidder" trong Product Detail.
- */
 @Composable
 fun WonScreen(navController: NavController, onOpenProduct: (String) -> Unit) {
     val container = LocalAppContainer.current
@@ -107,26 +97,5 @@ fun WonScreenContent(
                 }
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun WonScreenPreview() {
-    AuctionAppTheme {
-        WonScreenContent(
-            uiState = WonUiState(
-                isLoading = false,
-                auctionStates = listOf(
-                    AuctionStateResponse(
-                        productId = "prod-3",
-                        currentPrice = BigDecimal("92000000"),
-                        currentBidderId = "user-bidder-01",
-                        auctionEndAt = "2026-09-05 20:00 (Đã kết thúc)"
-                    )
-                )
-            ),
-            onOpenProduct = {}
-        )
     }
 }

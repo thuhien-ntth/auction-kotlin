@@ -5,7 +5,6 @@ import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
 
-// Mỗi hàm map 1-1 với route trên api-gateway — xem be/api-gateway/src/main/resources/application.yml
 interface AuctionApi {
 
     @POST("auth/login")
@@ -19,9 +18,6 @@ interface AuctionApi {
 
     @POST("auth/logout")
     suspend fun logout(): Response<Unit>
-
-    // Product search (Auction). page/size theo chuẩn Spring Data Pageable (page bắt đầu từ 0) —
-    // backend (catalog-service) đã hỗ trợ sẵn 2 param này tự động, không cần đổi gì phía BE.
     @GET("products")
     suspend fun searchProducts(
         @Query("keyword") keyword: String?,
@@ -38,9 +34,6 @@ interface AuctionApi {
 
     @PUT("products/{id}")
     suspend fun updateProduct(@Path("id") id: String, @Body request: CreateProductRequest): ProductDetail
-
-    // Upload/thay ảnh sản phẩm — multipart/form-data, field "file". Chỉ gọi được sau khi đã có
-    // productId (tức là sau registerProduct), khớp endpoint POST products/{id}/image ở catalog-service.
     @Multipart
     @POST("products/{id}/image")
     suspend fun uploadProductImage(
@@ -68,7 +61,6 @@ interface AuctionApi {
     @GET("admin/products/pending")
     suspend fun getPendingProducts(): PageResponse<ProductSummary>
 
-    // result = "APPROVED" | "REJECTED"
     @GET("admin/products/reviewed")
     suspend fun getReviewedProducts(
         @Query("result") result: String,

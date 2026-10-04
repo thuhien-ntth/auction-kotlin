@@ -36,7 +36,6 @@ class RegisterViewModel(
     fun register() {
         val currentState = _uiState.value
 
-        // Kiểm tra từng trường, lỗi hiện ngay dưới ô nhập tương ứng
         val fullNameError = if (currentState.fullName.isBlank()) "Vui lòng nhập họ và tên" else null
         val email = currentState.email.trim()
         val emailError = when {

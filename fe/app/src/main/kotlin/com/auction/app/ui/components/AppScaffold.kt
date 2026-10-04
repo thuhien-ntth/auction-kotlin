@@ -109,7 +109,7 @@ fun AppScaffold(
                     icon = { Icon(Icons.Default.Search, contentDescription = null) },
                     label = { Text("Tìm\nkiếm", fontSize = 10.sp, textAlign = androidx.compose.ui.text.style.TextAlign.Center, lineHeight = 12.sp) }
                 )
-                // Admin chỉ thấy: Tìm kiếm (tất cả sản phẩm) + Duyệt sản phẩm + Đăng xuất
+
                 if (!isAdmin) {
                     NavigationBarItem(
                         selected = currentRoute == Routes.EXHIBITION_MANAGEMENT,

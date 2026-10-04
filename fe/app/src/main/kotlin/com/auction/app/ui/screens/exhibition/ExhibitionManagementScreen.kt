@@ -1,7 +1,5 @@
 ﻿package com.auction.app.ui.screens.exhibition
 
-import android.widget.Toast
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Box
@@ -23,18 +21,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.auction.app.LocalAppContainer
-import com.auction.app.network.model.ProductSummary
 import com.auction.app.ui.components.AppScaffold
 import com.auction.app.ui.components.ProductThumbnail
 import com.auction.app.ui.components.StatusChip
 import com.auction.app.ui.navigation.Routes
-import com.auction.app.ui.theme.AuctionAppTheme
-import java.math.BigDecimal
 
 @Composable
 fun ExhibitionManagementScreen(navController: NavController, onOpenProduct: (String) -> Unit) {
@@ -90,30 +84,5 @@ fun ExhibitionManagementScreenContent(
                 }
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ExhibitionManagementScreenPreview() {
-    AuctionAppTheme {
-        ExhibitionManagementScreenContent(
-            uiState = ExhibitionManagementUiState(
-                isLoading = false,
-                products = listOf(
-                    ProductSummary(
-                        id = "prod-5", title = "Bộ bàn ghế Trắc Cẩm 6 món", category = "ANTIQUES",
-                        startPrice = BigDecimal("120000000"), status = "PENDING_APPROVAL",
-                        auctionStartAt = null, auctionEndAt = null, imageUrl = null
-                    ),
-                    ProductSummary(
-                        id = "prod-6", title = "MacBook Pro 16 M3 Max", category = "ELECTRONICS",
-                        startPrice = BigDecimal("72000000"), status = "REJECTED",
-                        auctionStartAt = null, auctionEndAt = null, imageUrl = null
-                    )
-                )
-            ),
-            onOpenProduct = {}
-        )
     }
 }
