@@ -1,0 +1,743 @@
+2026-10-06 22:00:26,749 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2026-10-06 22:00:26,812 INFO o.a.j.JMeter: Loading user properties from: C:\Users\thuhi\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin\user.properties
+2026-10-06 22:00:26,815 INFO o.a.j.JMeter: Loading system properties from: C:\Users\thuhi\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin\system.properties
+2026-10-06 22:00:26,816 INFO o.a.j.JMeter: Setting JMeter property: threads=$SO_USERS
+2026-10-06 22:00:26,817 INFO o.a.j.JMeter: Setting JMeter property: duration=$THOI_GIAN
+2026-10-06 22:00:26,817 INFO o.a.j.JMeter: Setting JMeter property: port=$port
+2026-10-06 22:00:26,817 INFO o.a.j.JMeter: Setting JMeter property: path=$path
+2026-10-06 22:00:26,834 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2026-10-06 22:00:26,835 INFO o.a.j.JMeter: Version 5.6.3
+2026-10-06 22:00:26,835 INFO o.a.j.JMeter: java.version=17.0.6
+2026-10-06 22:00:26,835 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2026-10-06 22:00:26,835 INFO o.a.j.JMeter: os.name=Windows 11
+2026-10-06 22:00:26,835 INFO o.a.j.JMeter: os.arch=amd64
+2026-10-06 22:00:26,835 INFO o.a.j.JMeter: os.version=10.0
+2026-10-06 22:00:26,835 INFO o.a.j.JMeter: file.encoding=Cp1252
+2026-10-06 22:00:26,835 INFO o.a.j.JMeter: java.awt.headless=true
+2026-10-06 22:00:26,836 INFO o.a.j.JMeter: Max memory     =1073741824
+2026-10-06 22:00:26,836 INFO o.a.j.JMeter: Available Processors =8
+2026-10-06 22:00:26,859 INFO o.a.j.JMeter: Default Locale=English (EN)
+2026-10-06 22:00:26,861 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2026-10-06 22:00:26,861 INFO o.a.j.JMeter: JMeterHome=C:\Users\thuhi\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3
+2026-10-06 22:00:26,861 INFO o.a.j.JMeter: user.dir  =C:\Users\thuhi\Project\mobile\be
+2026-10-06 22:00:26,865 INFO o.a.j.JMeter: PWD       =C:\Users\thuhi\Project\mobile\be
+2026-10-06 22:00:26,869 INFO o.a.j.JMeter: IP: 192.168.144.1 Name: ntth FullName: ntth.mshome.net
+2026-10-06 22:00:26,930 INFO o.a.j.JMeter: Setting property 'jmeter.reportgenerator.outputdir' to:'C:\Users\thuhi\Documents\KB2-Results\report_B-gateway-8080_run5'
+2026-10-06 22:00:26,935 INFO o.a.j.s.FileServer: Default base='C:\Users\thuhi\Project\mobile\be'
+2026-10-06 22:00:26,938 INFO o.a.j.s.FileServer: Set new base='C:\Users\thuhi\Documents'
+2026-10-06 22:00:27,218 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2026-10-06 22:00:27,261 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2026-10-06 22:00:27,267 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2026-10-06 22:00:27,273 INFO o.a.j.s.SaveService: Loading file: C:\Users\thuhi\Documents\KB2.jmx
+2026-10-06 22:00:27,373 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-10-06 22:00:27,373 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-10-06 22:00:27,373 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-10-06 22:00:27,373 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-10-06 22:00:27,374 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2026-10-06 22:00:27,374 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2026-10-06 22:00:27,442 INFO o.a.j.JMeter: Creating summariser <summary>
+2026-10-06 22:00:27,453 INFO o.a.j.r.d.ReportGenerator: ReportGenerator will use for Parsing the separator: ','
+2026-10-06 22:00:27,453 INFO o.a.j.r.d.ReportGenerator: Will generate report at end of test from  results file: C:\Users\thuhi\Documents\KB2-Results\KB2_B-gateway-8080_run5.csv
+2026-10-06 22:00:27,453 INFO o.a.j.r.d.ReportGenerator: Reading report generator properties from: C:\Users\thuhi\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin\reportgenerator.properties
+2026-10-06 22:00:27,455 INFO o.a.j.r.d.ReportGenerator: Merging with JMeter properties
+2026-10-06 22:00:27,462 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.temp_dir' not found, using default value 'temp' instead.
+2026-10-06 22:00:27,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.apdex_per_transaction' not found, using default value 'null' instead.
+2026-10-06 22:00:27,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: apdex_per_transaction is empty, not APDEX per transaction customization
+2026-10-06 22:00:27,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.sample_filter' not found, using default value 'null' instead.
+2026-10-06 22:00:27,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.report_title' not found, using default value 'null' instead.
+2026-10-06 22:00:27,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.start_date' not found, using default value 'null' instead.
+2026-10-06 22:00:27,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.end_date' not found, using default value 'null' instead.
+2026-10-06 22:00:27,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.date_format' not found, using default value 'null' instead.
+2026-10-06 22:00:27,467 INFO o.a.j.r.c.ReportGeneratorConfiguration: Will use date range start date: null, end date: null
+2026-10-06 22:00:27,474 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.totalTPS.exclude_controllers' not found, using default value 'false' instead.
+2026-10-06 22:00:27,475 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.activeThreadsOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-10-06 22:00:27,475 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.timeVsThreads.exclude_controllers' not found, using default value 'false' instead.
+2026-10-06 22:00:27,475 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimeDistribution.exclude_controllers' not found, using default value 'false' instead.
+2026-10-06 22:00:27,475 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.transactionsPerSecond.exclude_controllers' not found, using default value 'false' instead.
+2026-10-06 22:00:27,476 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentiles.exclude_controllers' not found, using default value 'false' instead.
+2026-10-06 22:00:27,476 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentilesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-10-06 22:00:27,476 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-10-06 22:00:27,477 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.connectTimeOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-10-06 22:00:27,477 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.latenciesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-10-06 22:00:27,479 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.filters_only_sample_series' not found, using default value 'true' instead.
+2026-10-06 22:00:27,479 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.series_filter' not found, using default value '' instead.
+2026-10-06 22:00:27,479 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.show_controllers_only' not found, using default value 'false' instead.
+2026-10-06 22:00:27,481 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.filters_only_sample_series' not found, using default value 'true' instead.
+2026-10-06 22:00:27,481 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.series_filter' not found, using default value '' instead.
+2026-10-06 22:00:27,481 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.show_controllers_only' not found, using default value 'false' instead.
+2026-10-06 22:00:27,507 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2026-10-06 22:00:27,508 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-10-06 22:00:27,508 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-10-06 22:00:27,518 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2026-10-06 22:00:27,518 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2026-10-06 22:00:27,639 INFO o.a.j.JMeter: Running test (1791298827639)
+2026-10-06 22:00:27,656 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : A-catalog
+2026-10-06 22:00:27,656 INFO o.a.j.e.StandardJMeterEngine: Starting 100 threads for group A-catalog.
+2026-10-06 22:00:27,656 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-10-06 22:00:27,656 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=100 ramp-up=10 delayedStart=false
+2026-10-06 22:00:27,681 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-1
+2026-10-06 22:00:27,715 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = ntth
+2026-10-06 22:00:27,716 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2026-10-06 22:00:27,716 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: A-catalog to finish before starting next group
+2026-10-06 22:00:27,727 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2026-10-06 22:00:27,728 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2026-10-06 22:00:27,729 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2026-10-06 22:00:27,729 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2026-10-06 22:00:27,729 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2026-10-06 22:00:27,772 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-2
+2026-10-06 22:00:27,870 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-3
+2026-10-06 22:00:27,967 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-4
+2026-10-06 22:00:28,064 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-5
+2026-10-06 22:00:28,164 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-6
+2026-10-06 22:00:28,262 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-7
+2026-10-06 22:00:28,360 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-8
+2026-10-06 22:00:28,462 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-9
+2026-10-06 22:00:28,561 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-10
+2026-10-06 22:00:28,658 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-11
+2026-10-06 22:00:28,759 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-12
+2026-10-06 22:00:28,858 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-13
+2026-10-06 22:00:28,960 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-14
+2026-10-06 22:00:29,058 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-15
+2026-10-06 22:00:29,158 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-16
+2026-10-06 22:00:29,258 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-17
+2026-10-06 22:00:29,362 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-18
+2026-10-06 22:00:29,457 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-19
+2026-10-06 22:00:29,557 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-20
+2026-10-06 22:00:29,659 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-21
+2026-10-06 22:00:29,758 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-22
+2026-10-06 22:00:29,856 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-23
+2026-10-06 22:00:29,960 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-24
+2026-10-06 22:00:30,006 INFO o.a.j.r.Summariser: summary +   2050 in 00:00:02 =  866.8/s Avg:    13 Min:     4 Max:    77 Err:     0 (0.00%) Active: 24 Started: 24 Finished: 0
+2026-10-06 22:00:30,064 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-25
+2026-10-06 22:00:30,158 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-26
+2026-10-06 22:00:30,258 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-27
+2026-10-06 22:00:30,358 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-28
+2026-10-06 22:00:30,460 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-29
+2026-10-06 22:00:30,560 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-30
+2026-10-06 22:00:30,658 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-31
+2026-10-06 22:00:30,757 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-32
+2026-10-06 22:00:30,858 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-33
+2026-10-06 22:00:30,974 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-34
+2026-10-06 22:00:31,057 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-35
+2026-10-06 22:00:31,159 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-36
+2026-10-06 22:00:31,259 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-37
+2026-10-06 22:00:31,358 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-38
+2026-10-06 22:00:31,458 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-39
+2026-10-06 22:00:31,558 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-40
+2026-10-06 22:00:31,656 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-41
+2026-10-06 22:00:31,756 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-42
+2026-10-06 22:00:31,856 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-43
+2026-10-06 22:00:31,958 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-44
+2026-10-06 22:00:32,059 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-45
+2026-10-06 22:00:32,166 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-46
+2026-10-06 22:00:32,258 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-47
+2026-10-06 22:00:32,358 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-48
+2026-10-06 22:00:32,461 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-49
+2026-10-06 22:00:32,558 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-50
+2026-10-06 22:00:32,659 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-51
+2026-10-06 22:00:32,757 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-52
+2026-10-06 22:00:32,858 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-53
+2026-10-06 22:00:32,958 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-54
+2026-10-06 22:00:33,062 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-55
+2026-10-06 22:00:33,164 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-56
+2026-10-06 22:00:33,258 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-57
+2026-10-06 22:00:33,358 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-58
+2026-10-06 22:00:33,460 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-59
+2026-10-06 22:00:33,557 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-60
+2026-10-06 22:00:33,657 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-61
+2026-10-06 22:00:33,760 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-62
+2026-10-06 22:00:33,863 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-63
+2026-10-06 22:00:33,958 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-64
+2026-10-06 22:00:34,059 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-65
+2026-10-06 22:00:34,159 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-66
+2026-10-06 22:00:34,258 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-67
+2026-10-06 22:00:34,358 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-68
+2026-10-06 22:00:34,459 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-69
+2026-10-06 22:00:34,558 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-70
+2026-10-06 22:00:34,657 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-71
+2026-10-06 22:00:34,758 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-72
+2026-10-06 22:00:34,857 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-73
+2026-10-06 22:00:34,969 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-74
+2026-10-06 22:00:35,058 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-75
+2026-10-06 22:00:35,157 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-76
+2026-10-06 22:00:35,258 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-77
+2026-10-06 22:00:35,357 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-78
+2026-10-06 22:00:35,458 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-79
+2026-10-06 22:00:35,556 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-80
+2026-10-06 22:00:35,657 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-81
+2026-10-06 22:00:35,761 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-82
+2026-10-06 22:00:35,859 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-83
+2026-10-06 22:00:35,957 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-84
+2026-10-06 22:00:36,080 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-85
+2026-10-06 22:00:36,164 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-86
+2026-10-06 22:00:36,262 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-87
+2026-10-06 22:00:36,358 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-88
+2026-10-06 22:00:36,458 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-89
+2026-10-06 22:00:36,559 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-90
+2026-10-06 22:00:36,663 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-91
+2026-10-06 22:00:36,756 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-92
+2026-10-06 22:00:36,857 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-93
+2026-10-06 22:00:36,957 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-94
+2026-10-06 22:00:37,059 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-95
+2026-10-06 22:00:37,157 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-96
+2026-10-06 22:00:37,257 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-97
+2026-10-06 22:00:37,357 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-98
+2026-10-06 22:00:37,457 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-99
+2026-10-06 22:00:37,557 INFO o.a.j.t.JMeterThread: Thread started: A-catalog 1-100
+2026-10-06 22:01:00,003 INFO o.a.j.r.Summariser: summary +  44754 in 00:00:30 = 1491.9/s Avg:    60 Min:     4 Max:  5424 Err:     0 (0.00%) Active: 100 Started: 100 Finished: 0
+2026-10-06 22:01:00,006 INFO o.a.j.r.Summariser: summary =  46804 in 00:00:32 = 1446.3/s Avg:    58 Min:     4 Max:  5424 Err:     0 (0.00%)
+2026-10-06 22:01:27,667 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-2
+2026-10-06 22:01:27,668 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-2
+2026-10-06 22:01:27,679 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-9
+2026-10-06 22:01:27,679 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-9
+2026-10-06 22:01:27,684 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-12
+2026-10-06 22:01:27,685 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-12
+2026-10-06 22:01:27,690 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-1
+2026-10-06 22:01:27,690 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-1
+2026-10-06 22:01:27,691 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-22
+2026-10-06 22:01:27,691 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-22
+2026-10-06 22:01:27,693 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-24
+2026-10-06 22:01:27,693 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-24
+2026-10-06 22:01:27,700 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-18
+2026-10-06 22:01:27,702 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-10
+2026-10-06 22:01:27,702 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-18
+2026-10-06 22:01:27,702 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-13
+2026-10-06 22:01:27,700 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-21
+2026-10-06 22:01:27,702 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-21
+2026-10-06 22:01:27,702 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-13
+2026-10-06 22:01:27,702 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-10
+2026-10-06 22:01:27,706 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-52
+2026-10-06 22:01:27,706 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-52
+2026-10-06 22:01:27,709 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-66
+2026-10-06 22:01:27,710 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-66
+2026-10-06 22:01:27,710 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-75
+2026-10-06 22:01:27,710 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-20
+2026-10-06 22:01:27,710 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-75
+2026-10-06 22:01:27,710 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-20
+2026-10-06 22:01:27,711 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-70
+2026-10-06 22:01:27,711 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-31
+2026-10-06 22:01:27,711 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-70
+2026-10-06 22:01:27,711 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-31
+2026-10-06 22:01:27,711 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-71
+2026-10-06 22:01:27,711 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-71
+2026-10-06 22:01:27,712 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-3
+2026-10-06 22:01:27,713 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-3
+2026-10-06 22:01:27,713 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-27
+2026-10-06 22:01:27,714 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-27
+2026-10-06 22:01:27,714 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-69
+2026-10-06 22:01:27,714 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-69
+2026-10-06 22:01:27,715 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-98
+2026-10-06 22:01:27,715 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-78
+2026-10-06 22:01:27,715 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-98
+2026-10-06 22:01:27,715 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-78
+2026-10-06 22:01:27,715 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-54
+2026-10-06 22:01:27,715 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-43
+2026-10-06 22:01:27,715 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-54
+2026-10-06 22:01:27,715 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-43
+2026-10-06 22:01:27,716 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-89
+2026-10-06 22:01:27,716 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-15
+2026-10-06 22:01:27,716 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-89
+2026-10-06 22:01:27,716 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-15
+2026-10-06 22:01:27,718 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-23
+2026-10-06 22:01:27,718 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-99
+2026-10-06 22:01:27,718 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-99
+2026-10-06 22:01:27,718 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-23
+2026-10-06 22:01:27,723 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-33
+2026-10-06 22:01:27,723 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-33
+2026-10-06 22:01:27,723 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-67
+2026-10-06 22:01:27,723 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-14
+2026-10-06 22:01:27,723 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-67
+2026-10-06 22:01:27,723 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-48
+2026-10-06 22:01:27,724 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-48
+2026-10-06 22:01:27,724 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-93
+2026-10-06 22:01:27,723 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-14
+2026-10-06 22:01:27,724 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-91
+2026-10-06 22:01:27,725 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-68
+2026-10-06 22:01:27,725 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-68
+2026-10-06 22:01:27,725 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-91
+2026-10-06 22:01:27,724 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-93
+2026-10-06 22:01:27,728 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-87
+2026-10-06 22:01:27,728 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-81
+2026-10-06 22:01:27,729 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-87
+2026-10-06 22:01:27,729 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-81
+2026-10-06 22:01:27,730 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-19
+2026-10-06 22:01:27,730 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-57
+2026-10-06 22:01:27,730 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-19
+2026-10-06 22:01:27,730 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-8
+2026-10-06 22:01:27,730 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-57
+2026-10-06 22:01:27,731 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-8
+2026-10-06 22:01:27,731 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-25
+2026-10-06 22:01:27,731 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-25
+2026-10-06 22:01:27,731 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-35
+2026-10-06 22:01:27,732 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-35
+2026-10-06 22:01:27,732 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-84
+2026-10-06 22:01:27,732 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-84
+2026-10-06 22:01:27,733 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-36
+2026-10-06 22:01:27,733 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-42
+2026-10-06 22:01:27,733 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-36
+2026-10-06 22:01:27,733 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-42
+2026-10-06 22:01:27,733 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-72
+2026-10-06 22:01:27,733 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-72
+2026-10-06 22:01:27,733 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-83
+2026-10-06 22:01:27,734 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-83
+2026-10-06 22:01:27,735 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-62
+2026-10-06 22:01:27,735 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-26
+2026-10-06 22:01:27,735 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-26
+2026-10-06 22:01:27,735 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-62
+2026-10-06 22:01:27,735 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-77
+2026-10-06 22:01:27,735 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-77
+2026-10-06 22:01:27,735 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-40
+2026-10-06 22:01:27,735 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-82
+2026-10-06 22:01:27,736 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-56
+2026-10-06 22:01:27,736 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-40
+2026-10-06 22:01:27,736 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-29
+2026-10-06 22:01:27,736 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-56
+2026-10-06 22:01:27,736 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-29
+2026-10-06 22:01:27,736 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-7
+2026-10-06 22:01:27,736 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-82
+2026-10-06 22:01:27,736 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-64
+2026-10-06 22:01:27,736 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-7
+2026-10-06 22:01:27,736 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-64
+2026-10-06 22:01:27,737 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-96
+2026-10-06 22:01:27,737 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-96
+2026-10-06 22:01:27,737 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-79
+2026-10-06 22:01:27,737 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-79
+2026-10-06 22:01:27,739 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-63
+2026-10-06 22:01:27,739 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-63
+2026-10-06 22:01:27,739 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-17
+2026-10-06 22:01:27,738 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-94
+2026-10-06 22:01:27,740 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-94
+2026-10-06 22:01:27,740 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-17
+2026-10-06 22:01:27,741 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-90
+2026-10-06 22:01:27,741 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-80
+2026-10-06 22:01:27,741 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-90
+2026-10-06 22:01:27,741 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-80
+2026-10-06 22:01:27,741 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-41
+2026-10-06 22:01:27,741 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-41
+2026-10-06 22:01:27,741 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-16
+2026-10-06 22:01:27,741 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-16
+2026-10-06 22:01:27,756 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-11
+2026-10-06 22:01:27,756 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-11
+2026-10-06 22:01:27,757 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-46
+2026-10-06 22:01:27,758 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-46
+2026-10-06 22:01:27,759 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-65
+2026-10-06 22:01:27,760 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-65
+2026-10-06 22:01:27,760 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-34
+2026-10-06 22:01:27,760 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-34
+2026-10-06 22:01:27,761 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-30
+2026-10-06 22:01:27,762 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-30
+2026-10-06 22:01:27,762 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-5
+2026-10-06 22:01:27,762 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-5
+2026-10-06 22:01:27,763 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-47
+2026-10-06 22:01:27,763 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-47
+2026-10-06 22:01:27,763 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-60
+2026-10-06 22:01:27,763 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-60
+2026-10-06 22:01:27,763 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-37
+2026-10-06 22:01:27,763 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-37
+2026-10-06 22:01:27,763 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-51
+2026-10-06 22:01:27,763 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-39
+2026-10-06 22:01:27,763 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-51
+2026-10-06 22:01:27,764 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-39
+2026-10-06 22:01:27,764 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-73
+2026-10-06 22:01:27,764 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-73
+2026-10-06 22:01:27,764 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-95
+2026-10-06 22:01:27,764 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-95
+2026-10-06 22:01:27,765 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-86
+2026-10-06 22:01:27,765 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-86
+2026-10-06 22:01:27,765 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-100
+2026-10-06 22:01:27,765 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-100
+2026-10-06 22:01:27,765 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-92
+2026-10-06 22:01:27,766 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-74
+2026-10-06 22:01:27,766 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-88
+2026-10-06 22:01:27,766 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-74
+2026-10-06 22:01:27,766 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-92
+2026-10-06 22:01:27,766 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-28
+2026-10-06 22:01:27,766 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-88
+2026-10-06 22:01:27,766 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-28
+2026-10-06 22:01:27,766 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-58
+2026-10-06 22:01:27,766 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-59
+2026-10-06 22:01:27,766 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-58
+2026-10-06 22:01:27,766 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-59
+2026-10-06 22:01:27,767 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-44
+2026-10-06 22:01:27,767 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-44
+2026-10-06 22:01:27,768 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-53
+2026-10-06 22:01:27,768 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-53
+2026-10-06 22:01:27,775 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-85
+2026-10-06 22:01:27,775 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-61
+2026-10-06 22:01:27,775 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-32
+2026-10-06 22:01:27,775 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-61
+2026-10-06 22:01:27,775 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-85
+2026-10-06 22:01:27,775 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-32
+2026-10-06 22:01:27,775 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-55
+2026-10-06 22:01:27,775 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-55
+2026-10-06 22:01:27,780 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-49
+2026-10-06 22:01:27,780 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-49
+2026-10-06 22:01:27,782 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-76
+2026-10-06 22:01:27,782 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-4
+2026-10-06 22:01:27,782 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-4
+2026-10-06 22:01:27,782 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-76
+2026-10-06 22:01:27,784 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-45
+2026-10-06 22:01:27,785 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-45
+2026-10-06 22:01:27,785 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-38
+2026-10-06 22:01:27,785 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-38
+2026-10-06 22:01:27,785 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-6
+2026-10-06 22:01:27,786 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-6
+2026-10-06 22:01:27,786 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-50
+2026-10-06 22:01:27,786 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-50
+2026-10-06 22:01:27,787 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: A-catalog 1-97
+2026-10-06 22:01:27,788 INFO o.a.j.t.JMeterThread: Thread finished: A-catalog 1-97
+2026-10-06 22:01:27,788 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 2 : B-gateway
+2026-10-06 22:01:27,788 INFO o.a.j.e.StandardJMeterEngine: Starting 100 threads for group B-gateway.
+2026-10-06 22:01:27,789 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-10-06 22:01:27,790 INFO o.a.j.t.ThreadGroup: Starting thread group... number=2 threads=100 ramp-up=10 delayedStart=false
+2026-10-06 22:01:27,796 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-1
+2026-10-06 22:01:27,843 INFO o.a.j.t.ThreadGroup: Started thread group number 2
+2026-10-06 22:01:27,843 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2026-10-06 22:01:27,896 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-2
+2026-10-06 22:01:27,995 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-3
+2026-10-06 22:01:28,096 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-4
+2026-10-06 22:01:28,194 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-5
+2026-10-06 22:01:28,295 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-6
+2026-10-06 22:01:28,396 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-7
+2026-10-06 22:01:28,497 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-8
+2026-10-06 22:01:28,596 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-9
+2026-10-06 22:01:28,697 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-10
+2026-10-06 22:01:28,799 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-11
+2026-10-06 22:01:28,900 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-12
+2026-10-06 22:01:28,995 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-13
+2026-10-06 22:01:29,099 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-14
+2026-10-06 22:01:29,200 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-15
+2026-10-06 22:01:29,299 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-16
+2026-10-06 22:01:29,402 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-17
+2026-10-06 22:01:29,500 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-18
+2026-10-06 22:01:29,600 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-19
+2026-10-06 22:01:29,698 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-20
+2026-10-06 22:01:29,800 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-21
+2026-10-06 22:01:29,901 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-22
+2026-10-06 22:01:30,001 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-23
+2026-10-06 22:01:30,005 INFO o.a.j.r.Summariser: summary +  61155 in 00:00:30 = 2038.5/s Avg:    45 Min:     3 Max:   338 Err:     0 (0.00%) Active: 23 Started: 123 Finished: 100
+2026-10-06 22:01:30,006 INFO o.a.j.r.Summariser: summary = 107959 in 00:01:02 = 1731.1/s Avg:    51 Min:     3 Max:  5424 Err:     0 (0.00%)
+2026-10-06 22:01:30,098 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-24
+2026-10-06 22:01:30,207 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-25
+2026-10-06 22:01:30,299 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-26
+2026-10-06 22:01:30,401 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-27
+2026-10-06 22:01:30,504 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-28
+2026-10-06 22:01:30,601 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-29
+2026-10-06 22:01:30,701 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-30
+2026-10-06 22:01:30,804 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-31
+2026-10-06 22:01:30,904 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-32
+2026-10-06 22:01:31,002 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-33
+2026-10-06 22:01:31,103 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-34
+2026-10-06 22:01:31,205 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-35
+2026-10-06 22:01:31,304 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-36
+2026-10-06 22:01:31,405 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-37
+2026-10-06 22:01:31,506 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-38
+2026-10-06 22:01:31,602 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-39
+2026-10-06 22:01:31,694 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-40
+2026-10-06 22:01:31,834 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-41
+2026-10-06 22:01:31,933 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-42
+2026-10-06 22:01:32,001 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-43
+2026-10-06 22:01:32,102 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-44
+2026-10-06 22:01:32,233 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-45
+2026-10-06 22:01:32,332 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-46
+2026-10-06 22:01:32,402 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-47
+2026-10-06 22:01:32,533 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-48
+2026-10-06 22:01:32,633 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-49
+2026-10-06 22:01:32,731 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-50
+2026-10-06 22:01:32,832 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-51
+2026-10-06 22:01:32,913 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-52
+2026-10-06 22:01:33,032 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-53
+2026-10-06 22:01:33,130 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-54
+2026-10-06 22:01:33,228 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-55
+2026-10-06 22:01:33,328 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-56
+2026-10-06 22:01:33,430 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-57
+2026-10-06 22:01:33,528 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-58
+2026-10-06 22:01:33,626 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-59
+2026-10-06 22:01:33,726 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-60
+2026-10-06 22:01:33,828 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-61
+2026-10-06 22:01:33,928 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-62
+2026-10-06 22:01:34,025 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-63
+2026-10-06 22:01:34,125 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-64
+2026-10-06 22:01:34,227 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-65
+2026-10-06 22:01:34,329 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-66
+2026-10-06 22:01:34,428 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-67
+2026-10-06 22:01:34,525 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-68
+2026-10-06 22:01:34,628 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-69
+2026-10-06 22:01:34,727 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-70
+2026-10-06 22:01:34,824 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-71
+2026-10-06 22:01:34,927 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-72
+2026-10-06 22:01:35,025 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-73
+2026-10-06 22:01:35,125 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-74
+2026-10-06 22:01:35,225 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-75
+2026-10-06 22:01:35,325 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-76
+2026-10-06 22:01:35,412 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-77
+2026-10-06 22:01:35,513 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-78
+2026-10-06 22:01:35,613 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-79
+2026-10-06 22:01:35,713 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-80
+2026-10-06 22:01:35,811 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-81
+2026-10-06 22:01:35,910 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-82
+2026-10-06 22:01:36,010 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-83
+2026-10-06 22:01:36,110 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-84
+2026-10-06 22:01:36,209 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-85
+2026-10-06 22:01:36,309 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-86
+2026-10-06 22:01:36,411 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-87
+2026-10-06 22:01:36,515 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-88
+2026-10-06 22:01:36,610 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-89
+2026-10-06 22:01:36,709 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-90
+2026-10-06 22:01:36,810 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-91
+2026-10-06 22:01:36,909 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-92
+2026-10-06 22:01:37,010 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-93
+2026-10-06 22:01:37,109 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-94
+2026-10-06 22:01:37,210 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-95
+2026-10-06 22:01:37,310 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-96
+2026-10-06 22:01:37,409 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-97
+2026-10-06 22:01:37,507 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-98
+2026-10-06 22:01:37,608 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-99
+2026-10-06 22:01:37,709 INFO o.a.j.t.JMeterThread: Thread started: B-gateway 2-100
+2026-10-06 22:02:00,008 INFO o.a.j.r.Summariser: summary +  39883 in 00:00:30 = 1329.3/s Avg:    67 Min:     5 Max:  1424 Err:     0 (0.00%) Active: 100 Started: 200 Finished: 100
+2026-10-06 22:02:00,009 INFO o.a.j.r.Summariser: summary = 147842 in 00:01:32 = 1600.6/s Avg:    55 Min:     3 Max:  5424 Err:     0 (0.00%)
+2026-10-06 22:02:27,800 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-9
+2026-10-06 22:02:27,801 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-17
+2026-10-06 22:02:27,801 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-9
+2026-10-06 22:02:27,802 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-17
+2026-10-06 22:02:27,804 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-21
+2026-10-06 22:02:27,804 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-3
+2026-10-06 22:02:27,805 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-21
+2026-10-06 22:02:27,805 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-3
+2026-10-06 22:02:27,807 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-5
+2026-10-06 22:02:27,807 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-5
+2026-10-06 22:02:27,809 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-24
+2026-10-06 22:02:27,810 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-24
+2026-10-06 22:02:27,811 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-15
+2026-10-06 22:02:27,811 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-7
+2026-10-06 22:02:27,812 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-15
+2026-10-06 22:02:27,812 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-7
+2026-10-06 22:02:27,815 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-50
+2026-10-06 22:02:27,815 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-37
+2026-10-06 22:02:27,815 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-42
+2026-10-06 22:02:27,815 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-50
+2026-10-06 22:02:27,815 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-37
+2026-10-06 22:02:27,816 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-42
+2026-10-06 22:02:27,821 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-44
+2026-10-06 22:02:27,821 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-44
+2026-10-06 22:02:27,821 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-39
+2026-10-06 22:02:27,821 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-36
+2026-10-06 22:02:27,821 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-20
+2026-10-06 22:02:27,821 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-36
+2026-10-06 22:02:27,822 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-28
+2026-10-06 22:02:27,822 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-28
+2026-10-06 22:02:27,823 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-39
+2026-10-06 22:02:27,823 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-20
+2026-10-06 22:02:27,831 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-13
+2026-10-06 22:02:27,831 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-67
+2026-10-06 22:02:27,832 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-13
+2026-10-06 22:02:27,832 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-67
+2026-10-06 22:02:27,835 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-26
+2026-10-06 22:02:27,835 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-26
+2026-10-06 22:02:27,841 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-87
+2026-10-06 22:02:27,841 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-62
+2026-10-06 22:02:27,841 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-87
+2026-10-06 22:02:27,841 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-62
+2026-10-06 22:02:27,842 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-68
+2026-10-06 22:02:27,842 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-27
+2026-10-06 22:02:27,842 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-22
+2026-10-06 22:02:27,842 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-64
+2026-10-06 22:02:27,842 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-58
+2026-10-06 22:02:27,842 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-94
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-92
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-94
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-30
+2026-10-06 22:02:27,842 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-60
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-93
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-66
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-16
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-30
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-96
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-93
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-27
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-19
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-92
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-4
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-4
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-18
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-45
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-58
+2026-10-06 22:02:27,842 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-22
+2026-10-06 22:02:27,842 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-68
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-64
+2026-10-06 22:02:27,845 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-55
+2026-10-06 22:02:27,845 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-23
+2026-10-06 22:02:27,845 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-55
+2026-10-06 22:02:27,846 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-79
+2026-10-06 22:02:27,846 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-79
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-45
+2026-10-06 22:02:27,847 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-65
+2026-10-06 22:02:27,848 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-65
+2026-10-06 22:02:27,848 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-18
+2026-10-06 22:02:27,848 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-19
+2026-10-06 22:02:27,848 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-46
+2026-10-06 22:02:27,848 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-46
+2026-10-06 22:02:27,849 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-96
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-12
+2026-10-06 22:02:27,849 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-12
+2026-10-06 22:02:27,843 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-60
+2026-10-06 22:02:27,849 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-66
+2026-10-06 22:02:27,849 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-16
+2026-10-06 22:02:27,845 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-84
+2026-10-06 22:02:27,850 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-84
+2026-10-06 22:02:27,850 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-29
+2026-10-06 22:02:27,850 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-29
+2026-10-06 22:02:27,850 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-23
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-99
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-88
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-10
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-77
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-99
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-34
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-88
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-34
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-59
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-49
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-91
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-59
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-49
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-78
+2026-10-06 22:02:27,854 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-78
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-1
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-10
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-31
+2026-10-06 22:02:27,854 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-1
+2026-10-06 22:02:27,854 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-31
+2026-10-06 22:02:27,854 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-77
+2026-10-06 22:02:27,854 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-91
+2026-10-06 22:02:27,853 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-89
+2026-10-06 22:02:27,854 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-11
+2026-10-06 22:02:27,854 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-89
+2026-10-06 22:02:27,854 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-11
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-14
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-8
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-14
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-54
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-8
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-86
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-57
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-75
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-57
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-86
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-75
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-97
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-54
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-32
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-33
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-35
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-33
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-41
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-41
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-97
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-72
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-32
+2026-10-06 22:02:27,859 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-83
+2026-10-06 22:02:27,858 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-35
+2026-10-06 22:02:27,859 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-72
+2026-10-06 22:02:27,859 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-73
+2026-10-06 22:02:27,859 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-73
+2026-10-06 22:02:27,859 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-83
+2026-10-06 22:02:27,862 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-51
+2026-10-06 22:02:27,862 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-51
+2026-10-06 22:02:27,864 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-95
+2026-10-06 22:02:27,864 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-85
+2026-10-06 22:02:27,864 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-80
+2026-10-06 22:02:27,865 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-43
+2026-10-06 22:02:27,865 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-95
+2026-10-06 22:02:27,865 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-43
+2026-10-06 22:02:27,865 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-25
+2026-10-06 22:02:27,865 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-81
+2026-10-06 22:02:27,865 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-25
+2026-10-06 22:02:27,865 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-81
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-100
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-100
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-47
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-98
+2026-10-06 22:02:27,864 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-6
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-98
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-6
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-71
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-71
+2026-10-06 22:02:27,865 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-74
+2026-10-06 22:02:27,864 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-56
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-74
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-56
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-85
+2026-10-06 22:02:27,864 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-40
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-80
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-69
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-61
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-69
+2026-10-06 22:02:27,866 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-40
+2026-10-06 22:02:27,867 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-47
+2026-10-06 22:02:27,867 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-61
+2026-10-06 22:02:27,867 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-2
+2026-10-06 22:02:27,867 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-90
+2026-10-06 22:02:27,867 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-52
+2026-10-06 22:02:27,867 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-2
+2026-10-06 22:02:27,867 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-52
+2026-10-06 22:02:27,867 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-90
+2026-10-06 22:02:27,867 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-48
+2026-10-06 22:02:27,867 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-82
+2026-10-06 22:02:27,867 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-63
+2026-10-06 22:02:27,867 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-48
+2026-10-06 22:02:27,869 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-63
+2026-10-06 22:02:27,869 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-82
+2026-10-06 22:02:27,869 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-53
+2026-10-06 22:02:27,869 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-53
+2026-10-06 22:02:27,870 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-76
+2026-10-06 22:02:27,871 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-38
+2026-10-06 22:02:27,871 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-76
+2026-10-06 22:02:27,871 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-38
+2026-10-06 22:02:27,880 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: B-gateway 2-70
+2026-10-06 22:02:27,881 INFO o.a.j.t.JMeterThread: Thread finished: B-gateway 2-70
+2026-10-06 22:02:27,881 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2026-10-06 22:02:27,885 INFO o.a.j.r.Summariser: summary +  41006 in 00:00:28 = 1470.9/s Avg:    68 Min:     7 Max:   354 Err:     0 (0.00%) Active: 0 Started: 200 Finished: 200
+2026-10-06 22:02:27,886 INFO o.a.j.r.Summariser: summary = 188848 in 00:02:00 = 1570.5/s Avg:    58 Min:     3 Max:  5424 Err:     0 (0.00%)
+2026-10-06 22:02:27,889 INFO o.a.j.JMeter: Generating Dashboard
+2026-10-06 22:02:27,889 INFO o.a.j.r.d.ReportGenerator: Flushing result collector before report Generation
+2026-10-06 22:02:27,932 INFO o.a.j.r.p.NormalizerSampleConsumer: Using format, 'ms', to parse timeStamp field
+2026-10-06 22:02:32,220 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): beginDate produced 0 samples
+2026-10-06 22:02:32,220 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): endDate produced 0 samples
+2026-10-06 22:02:32,223 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ApdexSummaryConsumer#stopProducing(): apdexSummary produced 0 samples
+2026-10-06 22:02:32,224 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.RequestsSummaryConsumer#stopProducing(): requestsSummary produced 0 samples
+2026-10-06 22:02:32,238 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.StatisticsSummaryConsumer#stopProducing(): statisticsSummary produced 0 samples
+2026-10-06 22:02:32,242 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.Top5ErrorsBySamplerConsumer#stopProducing(): top5ErrorsBySampler produced 0 samples
+2026-10-06 22:02:32,243 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ErrorsSummaryConsumer#stopProducing(): errorsSummary produced 0 samples
+2026-10-06 22:02:32,243 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.HitsPerSecondGraphConsumer#stopProducing(): hitsPerSecond produced 0 samples
+2026-10-06 22:02:33,790 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyVSRequestGraphConsumer#stopProducing(): latencyVsRequest produced 0 samples
+2026-10-06 22:02:33,797 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.SyntheticResponseTimeDistributionGraphConsumer#stopProducing(): syntheticResponseTimeDistribution produced 0 samples
+2026-10-06 22:02:33,797 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.BytesThroughputGraphConsumer#stopProducing(): bytesThroughputOverTime produced 0 samples
+2026-10-06 22:02:33,797 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.CodesPerSecondGraphConsumer#stopProducing(): codesPerSecond produced 0 samples
+2026-10-06 22:02:35,271 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeVSRequestGraphConsumer#stopProducing(): responseTimeVsRequest produced 0 samples
+2026-10-06 22:02:35,277 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): startIntervalControlerFilter produced 1321936 samples
+2026-10-06 22:02:35,277 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TotalTPSGraphConsumer#stopProducing(): totalTPS produced 0 samples
+2026-10-06 22:02:35,277 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ActiveThreadsGraphConsumer#stopProducing(): activeThreadsOverTime produced 0 samples
+2026-10-06 22:02:35,277 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TimeVSThreadGraphConsumer#stopProducing(): timeVsThreads produced 0 samples
+2026-10-06 22:02:35,277 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeDistributionGraphConsumer#stopProducing(): responseTimeDistribution produced 0 samples
+2026-10-06 22:02:35,277 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TransactionsPerSecondGraphConsumer#stopProducing(): transactionsPerSecond produced 0 samples
+2026-10-06 22:02:35,277 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesGraphConsumer#stopProducing(): responseTimePercentiles produced 0 samples
+2026-10-06 22:02:35,279 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesOverTimeGraphConsumer#stopProducing(): responseTimePercentilesOverTime produced 0 samples
+2026-10-06 22:02:35,284 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeOverTimeGraphConsumer#stopProducing(): responseTimesOverTime produced 0 samples
+2026-10-06 22:02:35,284 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ConnectTimeOverTimeGraphConsumer#stopProducing(): connectTimeOverTime produced 0 samples
+2026-10-06 22:02:35,284 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyOverTimeGraphConsumer#stopProducing(): latenciesOverTime produced 0 samples
+2026-10-06 22:02:35,284 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): nameFilter produced 2832720 samples
+2026-10-06 22:02:35,285 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): dateRangeFilter produced 566544 samples
+2026-10-06 22:02:35,285 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.NormalizerSampleConsumer#stopProducing(): normalizer produced 188848 samples
+2026-10-06 22:02:35,285 INFO o.a.j.r.p.CsvFileSampleSource: produce(): 188848 samples produced in 7s 311 ms on channel 0
+2026-10-06 22:02:35,285 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'json' of className:'org.apache.jmeter.report.dashboard.JsonExporter'
+2026-10-06 22:02:35,440 INFO o.a.j.r.d.JsonExporter: Found data for consumer statisticsSummary in context
+2026-10-06 22:02:35,440 INFO o.a.j.r.d.JsonExporter: Creating statistics for overall
+2026-10-06 22:02:35,441 INFO o.a.j.r.d.JsonExporter: Creating statistics for other transactions
+2026-10-06 22:02:35,441 INFO o.a.j.r.d.JsonExporter: Checking output folder
+2026-10-06 22:02:35,442 INFO o.a.j.r.d.JsonExporter: Writing statistics JSON to C:\Users\thuhi\Documents\KB2-Results\report_B-gateway-8080_run5\statistics.json
+2026-10-06 22:02:35,521 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'html' of className:'org.apache.jmeter.report.dashboard.HtmlTemplateExporter'
+2026-10-06 22:02:35,525 INFO o.a.j.r.d.HtmlTemplateExporter: Will generate dashboard in folder: C:\Users\thuhi\Documents\KB2-Results\report_B-gateway-8080_run5
+2026-10-06 22:02:35,729 INFO o.a.j.r.d.HtmlTemplateExporter: Report will be generated in: C:\Users\thuhi\Documents\KB2-Results\report_B-gateway-8080_run5, creating folder structure
+2026-10-06 22:02:35,735 INFO o.a.j.r.d.TemplateVisitor: Copying folder from 'C:\Users\thuhi\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin\report-template' to 'C:\Users\thuhi\Documents\KB2-Results\report_B-gateway-8080_run5', got message: C:\Users\thuhi\Documents\KB2-Results\report_B-gateway-8080_run5, found non empty folder with following content [C:\Users\thuhi\Documents\KB2-Results\report_B-gateway-8080_run5\statistics.json], will be ignored
+2026-10-06 22:02:36,818 INFO o.a.j.JMeter: Dashboard generated

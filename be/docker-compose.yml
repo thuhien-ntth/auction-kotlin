@@ -52,10 +52,12 @@ services:
       BIDDING_SERVICE_URL: http://bidding-service:8083
       INTERNAL_TOKEN: ${INTERNAL_TOKEN:-dev-internal-token-change-me}
       IMAGE_STORAGE_PATH: /app/uploads/products
+      # Cache TTL: đặt = 3 để BẬT cache, đặt = 0 để TẮT cache (dùng khi test KB1)
+      CACHE_CURRENT_PRICE_TTL_SECONDS: ${CACHE_TTL:-3}
       JAVA_TOOL_OPTIONS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=50 -Xss512k"
     volumes: ["catalog-images:/app/uploads/products"]
     mem_limit: 384m
-    expose: ["8082"]
+    ports: ["8082:8082"]
 
   bidding-service:
     build:
