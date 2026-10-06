@@ -1,8 +1,0 @@
-# đi thẳng vào từng service, bỏ qua gateway:
-services:
-  auth-service:
-    ports: ["127.0.0.1:8081:8081"]
-  catalog-service:
-    ports: ["127.0.0.1:8082:8082"]
-  bidding-service:
-    ports: ["127.0.0.1:8083:8083"]
